@@ -13,22 +13,25 @@ const VDE_CONFIG = {
   // URL pública da aplicação de Gestão de Bibliotecas Escolares
   // ATENÇÃO DE PUBLICAÇÃO: Deve ser preenchida com o domínio público definitivo
   // após o deploy da aplicação de bibliotecas.
-  // Enquanto estiver vazia (""), o site apresenta aviso institucional de
-  // homologação ativa e canal de implantação, impedindo redirecionamento para localhost.
+  // Deve começar com https://. Enquanto estiver vazia (""), o botão "Acessar
+  // Biblioteca" abre um aviso informativo e não redireciona; localhost é recusado.
   libraryAppUrl: "",
 
   // Rota interna da apresentação da ferramenta antes de qualquer login
   libraryPresentationUrl: "/ferramentas/biblioteca.html",
 
-  // Canais Institucionais Oficiais (sujeitos à confirmação factual antes do go-live)
+  // Canais de contato — ATIVAÇÃO FUTURA
+  // Enquanto formEndpoint for null, o formulário de contato.html permanece
+  // desativado e a página informa que o canal está em configuração.
   contact: {
-    // E-mail oficial: pendente de configuração definitiva de caixa postal pela equipe
+    // E-mail institucional. Quando preenchido (ex.: "nome@dominio"), passa a
+    // aparecer em contato.html como link de e-mail. Não inventar endereço.
     email: null,
-    // Endpoint de envio de formulário em hospedagem estática (ex: Formspree, Cloudflare Worker)
-    // Pendente de seleção do provedor institucional
-    formEndpoint: null,
-    // Informação de atendimento
-    atendimento: "Atendimento institucional para escolas e educadores sob demanda"
+    // Endpoint HTTPS de um serviço de formulários compatível com hospedagem
+    // estática (ex.: Formspree, Cloudflare Worker). Recebe POST em JSON com
+    // { name, email, role, subject, message } e deve responder 2xx em caso de
+    // sucesso. Preencher aqui habilita o formulário automaticamente.
+    formEndpoint: null
   },
 
   // Repositórios Oficiais do Projeto

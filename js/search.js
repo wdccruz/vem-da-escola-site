@@ -72,7 +72,7 @@
       category: "Conteúdos",
       url: "/conteudos.html",
       keywords: "conteudos artigos guias materiais pedagogicos leitura escola gestao",
-      desc: "Artigos, guias e materiais sobre educação, escola, família e desenvolvimento."
+      desc: "Temas editoriais do Vem da Escola e orientações já disponíveis no site."
     },
     {
       title: "Quem Somos — Sobre Fabby Assis",
@@ -86,7 +86,7 @@
       category: "Contato",
       url: "/contato.html",
       keywords: "contato atendimento duvidas suporte falar conosco mensagem",
-      desc: "Canais de diálogo oficiais e formulário de contato com a equipe Vem da Escola."
+      desc: "Página de contato do Vem da Escola. O canal de envio de mensagens está em configuração."
     }
   ];
 

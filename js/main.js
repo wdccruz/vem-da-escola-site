@@ -71,63 +71,109 @@
 
   /**
    * 3. Galeria de Telas da Biblioteca
+   * Abas acessíveis (setas, Home/End) e ampliação da captura em <dialog>.
    */
   function initGalleryTabs() {
-    const tabBtns = document.querySelectorAll('.preview-tab-btn');
+    const tabBtns = Array.from(document.querySelectorAll('.preview-tab-btn'));
     const previewImg = document.getElementById('preview-image');
     const previewCaption = document.getElementById('preview-caption-text');
     const previewBadge = document.getElementById('preview-badge-text');
 
     if (!tabBtns.length || !previewImg) return;
 
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+    function selectTab(btn) {
+      tabBtns.forEach(b => {
+        const selected = b === btn;
+        b.classList.toggle('active', selected);
+        b.setAttribute('aria-selected', selected ? 'true' : 'false');
+        b.tabIndex = selected ? 0 : -1;
+      });
 
-        const imgSrc = btn.getAttribute('data-image');
-        const caption = btn.getAttribute('data-caption');
-        const badge = btn.getAttribute('data-badge') || 'Módulo Verificado';
+      const imgSrc = btn.getAttribute('data-image');
+      const caption = btn.getAttribute('data-caption');
+      const badge = btn.getAttribute('data-badge') || btn.textContent.trim();
 
-        if (imgSrc) {
-          previewImg.src = imgSrc;
-          previewImg.alt = caption || 'Captura da tela do sistema';
-        }
-        if (previewCaption && caption) {
-          previewCaption.textContent = caption;
-        }
-        if (previewBadge) {
-          previewBadge.textContent = badge;
+      if (imgSrc) {
+        previewImg.src = imgSrc;
+        previewImg.alt = caption || 'Captura da tela do sistema';
+      }
+      if (previewCaption && caption) {
+        previewCaption.textContent = caption;
+      }
+      if (previewBadge) {
+        previewBadge.textContent = badge;
+      }
+      const frame = previewImg.closest('.ip-gallery-frame');
+      if (frame) frame.scrollTop = 0;
+    }
+
+    tabBtns.forEach((btn, index) => {
+      btn.addEventListener('click', () => selectTab(btn));
+      btn.addEventListener('keydown', (e) => {
+        let target = null;
+        if (e.key === 'ArrowRight') target = tabBtns[(index + 1) % tabBtns.length];
+        if (e.key === 'ArrowLeft') target = tabBtns[(index - 1 + tabBtns.length) % tabBtns.length];
+        if (e.key === 'Home') target = tabBtns[0];
+        if (e.key === 'End') target = tabBtns[tabBtns.length - 1];
+        if (target) {
+          e.preventDefault();
+          selectTab(target);
+          target.focus();
         }
       });
+    });
+
+    // Ampliação da captura
+    const lightbox = document.getElementById('preview-lightbox');
+    const lightboxImg = document.getElementById('preview-lightbox-image');
+    const lightboxCaption = document.getElementById('preview-lightbox-caption');
+    const zoomBtn = document.querySelector('[data-action="zoom-preview"]');
+    if (!lightbox || !lightboxImg || !zoomBtn || typeof lightbox.showModal !== 'function') return;
+
+    zoomBtn.addEventListener('click', () => {
+      lightboxImg.src = previewImg.src;
+      lightboxImg.alt = previewImg.alt;
+      if (lightboxCaption) lightboxCaption.textContent = previewImg.alt;
+      lightbox.showModal();
+    });
+
+    const closeBtn = lightbox.querySelector('[data-action="close-lightbox"]');
+    if (closeBtn) closeBtn.addEventListener('click', () => lightbox.close());
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.close();
     });
   }
 
   /**
    * 4. Acesso Controlado à Aplicação de Biblioteca
-   * Impede direcionamento a localhost na ausência de URL pública configurada.
+   * O endereço público vem de js/config.js (libraryAppUrl). Sem ele, o botão
+   * abre um aviso informativo em vez de redirecionar; nunca aponta para localhost.
    */
   function initLibraryAccess() {
     const appLinks = document.querySelectorAll('[data-link="app-library"]');
     if (!appLinks.length) return;
 
     const config = window.VDE_CONFIG || {};
-    const publicUrl = config.libraryAppUrl && config.libraryAppUrl.trim();
+    const publicUrl = (config.libraryAppUrl || '').trim();
+    const isPublic = /^https:\/\//i.test(publicUrl) && !/^https:\/\/(localhost|127\.|\[::1\])/i.test(publicUrl);
+    const status = document.getElementById('library-access-status');
 
     appLinks.forEach(link => {
-      if (publicUrl && publicUrl.startsWith('http')) {
+      if (isPublic) {
         link.href = publicUrl;
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noopener noreferrer');
       } else {
-        // Sem URL pública confirmada: intercepta e exibe modal institucional
-        link.href = "#status-homologacao";
         link.addEventListener('click', (e) => {
           e.preventDefault();
           showHomologationNotice();
         });
       }
     });
+
+    if (status && isPublic) {
+      status.textContent = 'A aplicação abre em uma nova aba.';
+    }
   }
 
   function showHomologationNotice() {
@@ -135,206 +181,149 @@
     if (!dialog) {
       dialog = document.createElement('dialog');
       dialog.id = 'homologation-dialog';
-      dialog.className = 'search-dialog';
-      dialog.style.padding = '24px';
-      dialog.style.maxWidth = '540px';
-
-      const content = document.createElement('div');
-      content.style.display = 'flex';
-      content.style.flexDirection = 'column';
-      content.style.gap = '16px';
+      dialog.className = 'ip-dialog';
+      dialog.setAttribute('aria-labelledby', 'homologation-title');
 
       const title = document.createElement('h3');
-      title.textContent = 'Sistema de Bibliotecas — Fase de Homologação';
-      title.style.color = 'var(--color-navy)';
-      title.style.fontSize = '1.25rem';
-      title.style.fontWeight = '700';
+      title.id = 'homologation-title';
+      title.className = 'ip-h3';
+      title.textContent = 'A aplicação ainda não está disponível ao público';
 
       const p1 = document.createElement('p');
-      p1.textContent = 'O primeiro produto tecnológico do Vem da Escola concluiu o ciclo de auditoria técnica e está em fase final de preparação para publicação oficial na infraestrutura de produção.';
-      p1.style.fontSize = '0.9rem';
-      p1.style.color = 'var(--color-text-body)';
-      p1.style.lineHeight = '1.6';
+      p1.className = 'ip-text';
+      p1.textContent = 'A Biblioteca Escolar está em fase de homologação e o endereço público ainda não foi publicado.';
 
       const p2 = document.createElement('p');
-      p2.textContent = 'Para solicitar acesso antecipado para a sua escola ou agendar a implantação do acervo, entre em contato com nossa equipe.';
-      p2.style.fontSize = '0.85rem';
-      p2.style.color = 'var(--color-text-muted)';
-      p2.style.lineHeight = '1.5';
+      p2.className = 'ip-text';
+      p2.textContent = 'Assim que a aplicação estiver disponível, o acesso será feito por este mesmo botão.';
 
       const actions = document.createElement('div');
-      actions.style.display = 'flex';
-      actions.style.gap = '12px';
-      actions.style.marginTop = '8px';
-      actions.style.flexWrap = 'wrap';
-
-      const contactBtn = document.createElement('a');
-      contactBtn.href = '/contato.html';
-      contactBtn.className = 'btn btn-primary';
-      contactBtn.textContent = 'Falar com a Equipe →';
+      actions.className = 'ip-actions';
 
       const closeBtn = document.createElement('button');
       closeBtn.type = 'button';
-      closeBtn.className = 'btn btn-secondary';
-      closeBtn.textContent = 'Fechar';
+      closeBtn.className = 'btn btn-primary';
+      closeBtn.textContent = 'Entendi';
       closeBtn.addEventListener('click', () => dialog.close());
-
-      actions.appendChild(contactBtn);
       actions.appendChild(closeBtn);
 
-      content.appendChild(title);
-      content.appendChild(p1);
-      content.appendChild(p2);
-      content.appendChild(actions);
-      dialog.appendChild(content);
+      // Caminho relativo à página atual, obtido do próprio menu de navegação
+      const navContact = document.querySelector('.nav-menu a[href$="contato.html"]');
+      if (navContact) {
+        const contactBtn = document.createElement('a');
+        contactBtn.href = navContact.getAttribute('href');
+        contactBtn.className = 'btn btn-secondary';
+        contactBtn.textContent = 'Página de contato';
+        actions.appendChild(contactBtn);
+      }
 
+      dialog.appendChild(title);
+      dialog.appendChild(p1);
+      dialog.appendChild(p2);
+      dialog.appendChild(actions);
       document.body.appendChild(dialog);
 
       dialog.addEventListener('click', (e) => {
-        const rect = dialog.getBoundingClientRect();
-        const isInDialog = (
-          rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
-          rect.left <= e.clientX && e.clientX <= rect.left + rect.width
-        );
-        if (!isInDialog) dialog.close();
+        if (e.target === dialog) dialog.close();
       });
     }
     dialog.showModal();
   }
 
   /**
-   * 5. Formulário de Contato Seguro
-   * Elimina completamente innerHTML para prevenir XSS.
-   * Não simula sucesso falso se não houver backend de mensageria configurado.
+   * 5. Formulário de Contato
+   * O formulário só é habilitado quando existe um endpoint de envio em
+   * js/config.js (contact.formEndpoint). Sem endpoint ele permanece desativado
+   * e nenhuma mensagem é enviada nem simulada.
+   * Todo texto é inserido com textContent (sem innerHTML).
    */
   function initContactForm() {
     const form = document.getElementById('contact-form');
     const feedbackBox = document.getElementById('contact-feedback');
-
     if (!form || !feedbackBox) return;
+
+    const config = window.VDE_CONFIG || {};
+    const contact = config.contact || {};
+    const endpoint = typeof contact.formEndpoint === 'string' && /^https:\/\//i.test(contact.formEndpoint.trim())
+      ? contact.formEndpoint.trim()
+      : null;
+    const email = typeof contact.email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email.trim())
+      ? contact.email.trim()
+      : null;
+
+    const fieldset = document.getElementById('contact-fieldset');
+    const submitBtn = document.getElementById('contact-submit');
+    const submitLabel = document.getElementById('contact-submit-label');
+    const statusBox = document.getElementById('contact-status');
+
+    // E-mail institucional: só aparece quando configurado
+    const emailRow = document.getElementById('contact-email-channel');
+    const emailLink = document.getElementById('contact-email-link');
+    if (email && emailRow && emailLink) {
+      emailLink.href = 'mailto:' + email;
+      emailLink.textContent = email;
+      emailRow.hidden = false;
+    }
+
+    if (!endpoint) {
+      // Sem meio de entrega: o formulário permanece desativado
+      form.addEventListener('submit', (e) => e.preventDefault());
+      return;
+    }
+
+    if (fieldset) fieldset.disabled = false;
+    if (submitBtn) submitBtn.disabled = false;
+    if (submitLabel) submitLabel.textContent = 'Enviar mensagem';
+    if (statusBox) statusBox.hidden = true;
+    form.removeAttribute('aria-describedby');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const nameInput = form.querySelector('#contact-name');
-      const emailInput = form.querySelector('#contact-email');
-      const roleInput = form.querySelector('#contact-role');
-      const subjectInput = form.querySelector('#contact-subject');
-      const messageInput = form.querySelector('#contact-message');
+      const value = id => {
+        const field = form.querySelector('#' + id);
+        return field ? field.value.trim() : '';
+      };
+      const name = value('contact-name');
+      const emailValue = value('contact-email');
+      const role = value('contact-role');
+      const subject = value('contact-subject') || 'Contato Institucional';
+      const message = value('contact-message');
 
-      const name = nameInput ? nameInput.value.trim() : '';
-      const email = emailInput ? emailInput.value.trim() : '';
-      const role = roleInput ? roleInput.value : '';
-      const subject = subjectInput ? subjectInput.value.trim() : 'Contato Institucional';
-      const message = messageInput ? messageInput.value.trim() : '';
-
-      // Limpa feedback anterior de forma segura
-      while (feedbackBox.firstChild) {
-        feedbackBox.removeChild(feedbackBox.firstChild);
-      }
-
-      if (!name || !email || !message) {
+      if (!name || !emailValue || !message) {
         showFeedback(feedbackBox, 'warning', 'Por favor, preencha todos os campos obrigatórios (*).');
         return;
       }
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
         showFeedback(feedbackBox, 'warning', 'Por favor, insira um endereço de e-mail válido.');
         return;
       }
 
-      const config = window.VDE_CONFIG || {};
-      const endpoint = config.contact && config.contact.formEndpoint;
-
-      if (endpoint) {
-        // Envio real via serviço configurado
-        try {
-          const resp = await fetch(endpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({ name, email, role, subject, message })
-          });
-          if (resp.ok) {
-            showFeedback(feedbackBox, 'success', 'Mensagem enviada com sucesso! Retornaremos o contato em breve.');
-            form.reset();
-          } else {
-            showFeedback(feedbackBox, 'error', 'Houve uma falha no envio. Por favor, tente novamente mais tarde.');
-          }
-        } catch {
-          showFeedback(feedbackBox, 'error', 'Serviço de envio temporariamente indisponível.');
+      if (submitBtn) submitBtn.disabled = true;
+      try {
+        const resp = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name, email: emailValue, role, subject, message })
+        });
+        if (resp.ok) {
+          showFeedback(feedbackBox, 'success', `Mensagem enviada. Obrigado, ${name}!`);
+          form.reset();
+        } else {
+          showFeedback(feedbackBox, 'error', 'Houve uma falha no envio. Por favor, tente novamente mais tarde.');
         }
-      } else {
-        // Sem endpoint configurado: orientação transparente sem simulação fictícia
-        showPreProductionNotice(feedbackBox, name, email, subject, message);
+      } catch {
+        showFeedback(feedbackBox, 'error', 'Serviço de envio temporariamente indisponível.');
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
   }
 
   function showFeedback(container, type, messageText) {
-    container.style.display = 'block';
-
-    const box = document.createElement('div');
-    box.style.padding = '14px 18px';
-    box.style.borderRadius = 'var(--radius-md)';
-    box.style.fontSize = '0.9rem';
-    box.style.lineHeight = '1.5';
-    box.style.marginBottom = '16px';
-
-    if (type === 'success') {
-      box.style.backgroundColor = 'var(--color-green-tint)';
-      box.style.border = '1px solid var(--color-green-accent)';
-      box.style.color = 'var(--color-green-accent)';
-    } else if (type === 'error') {
-      box.style.backgroundColor = '#fdf2f2';
-      box.style.border = '1px solid #f05252';
-      box.style.color = '#c81e1e';
-    } else {
-      box.style.backgroundColor = '#fef9e7';
-      box.style.border = '1px solid #f59e0b';
-      box.style.color = '#92400e';
-    }
-
-    box.textContent = messageText;
-    container.appendChild(box);
-    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  function showPreProductionNotice(container, name, email, subject, message) {
-    container.style.display = 'block';
-
-    const box = document.createElement('div');
-    box.style.padding = '16px 20px';
-    box.style.borderRadius = 'var(--radius-md)';
-    box.style.backgroundColor = 'var(--color-canvas-alt)';
-    box.style.border = '1.5px solid var(--color-card-border)';
-    box.style.marginBottom = '16px';
-
-    const title = document.createElement('h4');
-    title.textContent = 'Integração de Mensageria em Configuração';
-    title.style.color = 'var(--color-navy)';
-    title.style.marginBottom = '8px';
-    title.style.fontSize = '0.95rem';
-
-    const desc = document.createElement('p');
-    desc.textContent = 'Este site estático aguarda a definição do provedor institucional de mensageria da plataforma (pendência documentada em js/config.js).';
-    desc.style.color = 'var(--color-text-body)';
-    desc.style.fontSize = '0.85rem';
-    desc.style.lineHeight = '1.5';
-    desc.style.marginBottom = '12px';
-
-    const mailtoBtn = document.createElement('a');
-    mailtoBtn.className = 'btn btn-primary';
-    mailtoBtn.style.fontSize = '0.85rem';
-    mailtoBtn.textContent = 'Abrir no Cliente de E-mail Local →';
-    const bodyEncoded = encodeURIComponent(`Nome: ${name}\nE-mail: ${email}\n\n${message}`);
-    const subjectEncoded = encodeURIComponent(subject || 'Contato Vem da Escola');
-    mailtoBtn.href = `mailto:?subject=${subjectEncoded}&body=${bodyEncoded}`;
-
-    box.appendChild(title);
-    box.appendChild(desc);
-    box.appendChild(mailtoBtn);
-    container.appendChild(box);
-    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    container.className = 'form-feedback is-visible is-' + type;
+    container.textContent = messageText;
+    container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 })();

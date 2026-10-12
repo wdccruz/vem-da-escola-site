@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/inner.css">
 </head>
-<body>
+<body class="page-inner">
   <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
   <header class="site-header" role="banner">
@@ -60,59 +61,154 @@
   </header>
 
   <main id="conteudo-principal">
-    <section class="page-hero">
+    <!-- A. Abertura -->
+    <section class="ip-hero" aria-labelledby="page-title">
       <div class="container">
-        <div class="section-kicker">Comunidade Docente</div>
-        <h1 class="page-hero-title">Para Educadores</h1>
-        <p class="page-hero-subtitle">
-          Ferramentas, conteúdos e formações para facilitar o seu dia a dia na escola, valorizando o tempo pedagógico e a organização das rotinas.
-        </p>
+        <div class="ip-hero-grid">
+          <div>
+            <span class="ip-kicker">Para educadores</span>
+            <h1 id="page-title" class="ip-title">Mais tempo para ensinar, <span class="hl">menos burocracia.</span></h1>
+            <p class="ip-lead">
+              O Vem da Escola nasce da rotina escolar. Por isso, cada solução parte dos desafios reais de professores, gestores, equipes pedagógicas e responsáveis por bibliotecas.
+            </p>
+            <div class="ip-actions">
+              <a href="ferramentas/biblioteca.html" class="btn btn-primary">
+                <span>Conhecer a Biblioteca Escolar</span>
+                <span class="btn-icon-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </a>
+              <a href="#desafios" class="btn btn-secondary"><span>Desafios da rotina</span></a>
+            </div>
+          </div>
+
+          <div class="ip-hero-art art-edu">
+            <span class="blob blob-blue shape-a b1" aria-hidden="true"></span>
+            <span class="blob blob-beige shape-b b2" aria-hidden="true"></span>
+            <span class="blob blob-navy shape-arc b3" aria-hidden="true"></span>
+            <div class="ip-photo">
+              <img src="images/hero-educacao.jpg" alt="Educadora sorrindo com um tablet diante do quadro verde" width="1408" height="580">
+            </div>
+            <span class="blob blob-orange b4" aria-hidden="true"></span>
+            <svg class="ip-rays" viewBox="0 0 72 70" fill="none" stroke="#dd5024" stroke-width="11" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="36" x2="42" y2="64"/><line x1="40" y1="8" x2="66" y2="42"/></svg>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="page-content-section">
+    <!-- B. Desafios da rotina -->
+    <section class="ip-section" id="desafios" aria-labelledby="desafios-title">
       <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-6); margin-bottom: var(--spacing-10);">
-          <div style="background-color: var(--color-canvas); padding: var(--spacing-6); border-radius: var(--radius-lg); border: 1px solid var(--color-card-border);">
-            <div class="info-card-badge" style="margin-bottom: var(--spacing-3);">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-            </div>
-            <h2 style="font-size: var(--font-size-md); margin-bottom: var(--spacing-2);">Gestão de Bibliotecas sem Complicação</h2>
-            <p style="color: var(--color-text-body); font-size: var(--font-size-sm); line-height: 1.5; margin-bottom: var(--spacing-4);">
-              Sabemos como o acervo escolar pode se perder em anotações ou planilhas desorganizadas. O sistema de bibliotecas do Vem da Escola organiza os livros físicos, empréstimos e leitores da sua turma com facilidade.
-            </p>
-            <a href="ferramentas/biblioteca.html" class="btn btn-primary" style="font-size: 0.825rem;">Conhecer a Biblioteca Escolar →</a>
-          </div>
+        <div class="ip-heading">
+          <span class="ip-kicker">Desafios da rotina</span>
+          <h2 id="desafios-title" class="ip-h2">O que costuma tomar o tempo de quem <span class="hl-stroke">educa</span></h2>
+          <p class="ip-text">Situações conhecidas de quem trabalha na escola, e o ponto de partida das soluções do Vem da Escola.</p>
+        </div>
 
-          <div style="background-color: var(--color-canvas); padding: var(--spacing-6); border-radius: var(--radius-lg); border: 1px solid var(--color-card-border);">
-            <div class="info-card-badge" style="margin-bottom: var(--spacing-3);">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
-            </div>
-            <h2 style="font-size: var(--font-size-md); margin-bottom: var(--spacing-2);">Otimização do Tempo Pedagógico</h2>
-            <p style="color: var(--color-text-body); font-size: var(--font-size-sm); line-height: 1.5; margin-bottom: var(--spacing-4);">
-              Menos burocracia operacional significa mais tempo para mediação da aprendizagem, planejamento de aulas e escuta ativa dos alunos.
-            </p>
-            <a href="conteudos.html" class="btn btn-secondary" style="font-size: 0.825rem;">Ler Artigos Pedagógicos →</a>
-          </div>
+        <div class="ip-rows">
+          <article class="ip-row">
+            <h3 class="ip-h3">O acervo que se perde em anotações</h3>
+            <p class="ip-text">Sabemos como o acervo escolar pode se perder em anotações ou planilhas desorganizadas. Sem um registro claro, fica difícil saber quais livros a escola tem e com quem eles estão.</p>
+          </article>
+          <article class="ip-row">
+            <h3 class="ip-h3">A burocracia que ocupa o tempo pedagógico</h3>
+            <p class="ip-text">Menos burocracia operacional significa mais tempo para mediação da aprendizagem, planejamento de aulas e escuta ativa dos alunos.</p>
+          </article>
+          <article class="ip-row">
+            <h3 class="ip-h3">A leitura que ninguém consegue acompanhar</h3>
+            <p class="ip-text">Sem informações sobre o que cada turma lê, é mais difícil identificar interesses literários e propor atividades dinâmicas em sala.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-          <div style="background-color: var(--color-canvas); padding: var(--spacing-6); border-radius: var(--radius-lg); border: 1px solid var(--color-card-border);">
-            <div class="info-card-badge" style="margin-bottom: var(--spacing-3);">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-            </div>
-            <h2 style="font-size: var(--font-size-md); margin-bottom: var(--spacing-2);">Projetos de Incentivo à Leitura</h2>
-            <p style="color: var(--color-text-body); font-size: var(--font-size-sm); line-height: 1.5; margin-bottom: var(--spacing-4);">
-              Com os relatórios de leitura por turma, os educadores conseguem identificar interesses literários e propor atividades dinâmicas em sala.
+    <!-- C. Soluções -->
+    <section class="ip-section is-canvas" id="solucoes" aria-labelledby="solucoes-title">
+      <div class="container">
+        <div class="ip-split">
+          <div>
+            <span class="ip-kicker">Solução disponível</span>
+            <h2 id="solucoes-title" class="ip-h2">Gestão de bibliotecas sem complicação</h2>
+            <p class="ip-text">
+              A <strong>Biblioteca Escolar</strong> é a primeira ferramenta do Vem da Escola. Gratuita, ela organiza os livros físicos, os empréstimos e os leitores da escola com facilidade.
             </p>
-            <a href="sobre.html" class="btn btn-secondary" style="font-size: 0.825rem;">Conhecer o Manifesto →</a>
+            <ul class="ip-checks section-gap">
+              <li><strong>Acervo organizado</strong>Catálogo de obras e controle de cada exemplar físico.</li>
+              <li><strong>Empréstimos e devoluções</strong>Registro simples, com acompanhamento de prazos e pendências.</li>
+              <li><strong>Relatórios de leitura</strong>Informações por turma para apoiar projetos de incentivo à leitura.</li>
+            </ul>
+            <div class="ip-actions">
+              <a href="ferramentas/biblioteca.html" class="btn btn-primary">
+                <span>Ver a apresentação da ferramenta</span>
+                <span class="btn-icon-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </a>
+            </div>
+          </div>
+          <figure>
+            <div class="ip-screen">
+              <img src="images/biblioteca/dashboard.png" alt="Tela inicial da Biblioteca Escolar com indicadores do acervo e dos empréstimos" width="1440" height="1912" loading="lazy">
+            </div>
+            <figcaption class="ip-footnote">Captura real da aplicação em ambiente de homologação, com dados fictícios.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- D. Conhecimento e prática -->
+    <section class="ip-section" id="pratica" aria-labelledby="pratica-title">
+      <div class="container">
+        <div class="ip-heading">
+          <span class="ip-kicker">Conhecimento e prática</span>
+          <h2 id="pratica-title" class="ip-h2">Temas que acompanham o trabalho do educador</h2>
+        </div>
+
+        <div class="ip-columns">
+          <div class="ip-column">
+            <span class="ip-glyph is-navy" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="3.6" height="15" rx=".6"/><rect x="9" y="6.5" width="3.6" height="12.5" rx=".6"/><path d="M14.8 8.2l3.3-.9 3 11-3.3.9z"/><line x1="3" y1="20.5" x2="21.5" y2="20.5"/></svg></span>
+            <h3 class="ip-h3">Gestão de bibliotecas</h3>
+            <p class="ip-text">Como um acervo organizado facilita o acesso aos livros para alunos e professores.</p>
+            <a href="ferramentas/biblioteca.html" class="ip-link">Conhecer a ferramenta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+          <div class="ip-column">
+            <span class="ip-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span>
+            <h3 class="ip-h3">Otimização do tempo pedagógico</h3>
+            <p class="ip-text">Rotinas mais simples para que o tempo da escola seja dedicado à aprendizagem.</p>
+            <a href="conteudos.html" class="ip-link">Conhecer os temas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+          <div class="ip-column">
+            <span class="ip-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 4.9 6.5 4.6 3 5.2v13.3c3.5-.6 7-.3 9 1.3"/><path d="M12 6.5c2-1.6 5.5-1.9 9-1.3v13.3c-3.5-.6-7-.3-9 1.3"/><line x1="12" y1="6.5" x2="12" y2="19.8"/></svg></span>
+            <h3 class="ip-h3">Projetos de incentivo à leitura</h3>
+            <p class="ip-text">Com os relatórios de leitura por turma, os educadores identificam interesses e propõem atividades em sala.</p>
+            <a href="sobre.html" class="ip-link">Conhecer a proposta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
         </div>
 
-        <div style="background-color: var(--color-blue-tint); border-radius: var(--radius-xl); padding: var(--spacing-6); text-align: center; max-width: 760px; margin: 0 auto;">
-          <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-2);">Quer levar as soluções Vem da Escola para sua instituição?</h2>
-          <p style="color: var(--color-text-body); margin-bottom: var(--spacing-4); font-size: var(--font-size-sm);">
-            Nossa missão é apoiar escolas na transição da experiência tradicional para a inovação digital com simplicidade.
-          </p>
-          <a href="contato.html" class="btn btn-primary" style="font-size: 0.85rem;">Falar com a Equipe</a>
+        <div class="ip-note is-info section-gap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16.5"/><circle cx="12" cy="7.8" r=".6" fill="currentColor"/></svg>
+          <div>
+            <h3 class="ip-note-title">Conteúdos em preparação</h3>
+            <p>Os materiais para educadores ainda não foram publicados. Quando estiverem disponíveis, serão reunidos na área de Conteúdos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- E. Chamada final -->
+    <section class="ip-section is-canvas is-tight" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="ip-band">
+          <span class="blob blob-blue shape-a band-b1" aria-hidden="true"></span>
+          <span class="blob blob-orange shape-arc band-b2" aria-hidden="true"></span>
+          <div class="ip-band-content">
+            <span class="ip-kicker">Primeiro passo</span>
+            <h2 id="cta-title" class="ip-h2">Conheça a Biblioteca Escolar antes de acessar</h2>
+            <p class="ip-text">Veja o que a ferramenta faz, como funciona e quais telas ela oferece. Nossa missão é apoiar escolas na transição da experiência tradicional para a inovação digital com simplicidade.</p>
+            <div class="ip-actions">
+              <a href="ferramentas/biblioteca.html" class="btn btn-primary">
+                <span>Ir para a apresentação</span>
+                <span class="btn-icon-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </a>
+              <a href="contato.html" class="btn btn-secondary"><span>Página de contato</span></a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -123,9 +219,14 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="images/logo-vem-da-escola.svg" alt="Vem da Escola" class="brand-logo-footer" width="502" height="315">
-          <p class="footer-desc">Transformando décadas de vivência na escola em soluções digitais acessíveis e organizadas.</p>
-          <div class="footer-quote">"Quando o conhecimento circula, a educação se fortalece."</div>
+          <p class="footer-desc">
+            Transformando décadas de vivência na escola em soluções digitais acessíveis, funcionais e organizadas para toda a comunidade educacional.
+          </p>
+          <div class="footer-quote">
+            "Quando o conhecimento circula, a educação se fortalece."
+          </div>
         </div>
+
         <div>
           <div class="footer-title">Navegação</div>
           <ul class="footer-links">
@@ -133,25 +234,33 @@
             <li><a href="educadores.html" class="footer-link">Para Educadores</a></li>
             <li><a href="familias.html" class="footer-link">Para Famílias</a></li>
             <li><a href="conteudos.html" class="footer-link">Conteúdos</a></li>
-            <li><a href="sobre.html" class="footer-link">Sobre</a></li>
+            <li><a href="sobre.html" class="footer-link">Sobre a Iniciativa</a></li>
           </ul>
         </div>
+
         <div>
           <div class="footer-title">Ferramentas</div>
           <ul class="footer-links">
             <li><a href="ferramentas/biblioteca.html" class="footer-link">Biblioteca Escolar</a></li>
-            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Recursos do Acervo</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Gestão de Acervo</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Circulação &amp; Empréstimos</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Relatórios Gerenciais</a></li>
           </ul>
         </div>
+
         <div>
           <div class="footer-title">Contato</div>
           <div class="footer-contact-info">
-            <p><a href="contato.html" class="footer-link" style="color: var(--color-terracotta); font-weight: 600;">Fale Conosco →</a></p>
+            <p>Diálogo com escolas, educadores, gestores e famílias:</p>
+            <p><a href="contato.html" class="footer-link is-accent">Fale Conosco →</a></p>
+            <p class="footer-note">Canais oficiais de diálogo dedicados a professores, gestores e famílias.</p>
           </div>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <p>&copy; 2026 Vem da Escola — Fundado por Fabby Assis.</p>
+        <p>&copy; 2026 Vem da Escola — Fundado por Fabby Assis. Todos os direitos reservados.</p>
+        <p>Desenvolvido com foco em acessibilidade e simplicidade operacional.</p>
       </div>
     </div>
   </footer>

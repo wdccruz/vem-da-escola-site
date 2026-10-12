@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/inner.css">
 </head>
-<body>
+<body class="page-inner">
   <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
   <header class="site-header" role="banner">
@@ -60,75 +61,192 @@
   </header>
 
   <main id="conteudo-principal">
-    <section class="page-hero">
+    <!-- A. Abertura -->
+    <section class="ip-hero" aria-labelledby="page-title">
       <div class="container">
-        <div class="section-kicker">História &amp; Propósito</div>
-        <h1 class="page-hero-title">Nossa História</h1>
-        <p class="page-hero-subtitle">
-          Da experiência real para uma educação mais viva: como três décadas de chão de escola se transformaram no Vem da Escola.
-        </p>
+        <div class="ip-hero-grid">
+          <div>
+            <span class="ip-kicker">Nossa história</span>
+            <h1 id="page-title" class="ip-title">Da experiência real para uma educação <span class="hl-stroke">mais viva.</span></h1>
+            <p class="ip-lead">
+              O conhecimento que nasce de quem vive a escola de verdade.
+            </p>
+            <div class="ip-actions">
+              <a href="#fundadora" class="btn btn-primary">
+                <span>Conhecer a história</span>
+                <span class="btn-icon-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </a>
+              <a href="#principios" class="btn btn-secondary"><span>Nossos princípios</span></a>
+            </div>
+          </div>
+
+          <div class="ip-hero-art art-about">
+            <span class="blob blob-navy shape-a b1" aria-hidden="true"></span>
+            <span class="blob blob-orange b2" aria-hidden="true"></span>
+            <div class="ip-photo">
+              <img src="images/quem-somos-professora.jpg" alt="Professora de costas em sala de aula, diante de uma lousa digital, com alunos ao fundo" width="680" height="316">
+            </div>
+            <svg class="ip-leaves" viewBox="0 0 132 126" aria-hidden="true"><path d="M74 118 C70 92 66 70 58 48" fill="none" stroke="#152e44" stroke-width="2.2" stroke-linecap="round"/><path d="M80 112 C88 90 100 70 118 52" fill="none" stroke="#152e44" stroke-width="2.2" stroke-linecap="round"/><path d="M60 86 C30 76 18 46 32 14 C60 30 72 58 60 86Z" fill="#234d71"/><path d="M84 96 C84 64 100 38 130 26 C134 60 116 86 84 96Z" fill="#152e44"/><path d="M72 58 C64 38 72 14 94 2 C102 24 94 46 72 58Z" fill="#4a789c"/></svg>
+            <svg class="ip-rays" viewBox="0 0 72 70" fill="none" stroke="#dd5024" stroke-width="11" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="36" x2="42" y2="64"/><line x1="40" y1="8" x2="66" y2="42"/></svg>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="page-content-section">
+    <!-- B. Experiência da fundadora -->
+    <section class="ip-section" id="fundadora" aria-labelledby="fundadora-title">
       <div class="container">
-        <div class="about-grid" style="margin-bottom: var(--spacing-12);">
-          <div class="about-media">
-            <div class="about-image-wrapper">
-              <img src="images/quem-somos-professora.jpg" alt="Professora diante da lousa digital em sala de aula" width="636" height="288">
+        <div class="ip-split is-top">
+          <div class="ip-founder">
+            <span class="blob blob-beige shape-a founder-b1" aria-hidden="true"></span>
+            <span class="ip-eyebrow">Fundadora</span>
+            <p class="ip-founder-name">Fabby Assis</p>
+            <p class="ip-founder-role">Educadora e fundadora do Vem da Escola</p>
+            <div class="ip-stat">
+              <span class="ip-stat-value">+30 anos*</span>
+              <span class="ip-stat-label">de experiência na educação</span>
             </div>
+            <p class="ip-footnote">*Indicador sujeito à confirmação factual antes da publicação.</p>
           </div>
-          <div class="about-content">
-            <h2 class="about-title">
-              O conhecimento que nasce de quem vive a escola de verdade.
-            </h2>
-            <p class="about-text" style="margin-bottom: var(--spacing-3);">
+
+          <div>
+            <span class="ip-kicker">Quem está por trás</span>
+            <h2 id="fundadora-title" class="ip-h2">Uma iniciativa que nasce dentro da escola</h2>
+            <p class="ip-text">
               O <strong>Vem da Escola</strong> nasce da experiência da <strong>Fabby Assis</strong>, educadora com décadas de vivência na escola. Transformamos conhecimento em ferramentas que apoiam professores, gestores e instituições a tornarem a rotina da escola num cotidiano facilitado, organizado e prático.
             </p>
-            <p style="color: var(--color-text-body); font-size: 0.95rem; line-height: 1.6; margin-bottom: var(--spacing-5);">
+            <p class="ip-text">
               Não somos uma empresa de tecnologia distante da realidade. Nascemos dentro da sala de aula, da convivência diária com os alunos, dos conselhos de classe, das bibliotecas cheias de histórias e dos desafios cotidianos da gestão escolar.
             </p>
-            <div class="about-quote-box">
-              <p class="about-quote-text">
-                "Quando o conhecimento circula, a educação se fortalece."
-              </p>
-            </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Pilares e Princípios -->
-        <div style="border-top: 1px solid var(--color-border-subtle); padding-top: var(--spacing-10);">
-          <div class="section-heading-center">
-            <div class="section-kicker">Nossos Princípios</div>
-            <h2 class="section-title">O que orienta cada solução desenvolvida</h2>
+    <!-- C. Da experiência à inovação -->
+    <section class="ip-section is-canvas" id="conceito" aria-labelledby="conceito-title">
+      <div class="container">
+        <div class="ip-heading is-center">
+          <span class="ip-kicker">O conceito</span>
+          <h2 id="conceito-title" class="ip-h2">Da experiência do quadro verde à <span class="hl-stroke">inovação digital.</span></h2>
+          <p class="ip-text">A tecnologia não é a origem do Vem da Escola. Ela é a forma de levar a experiência de quem vive a escola para mais salas de aula.</p>
+        </div>
+
+        <div class="ip-concept">
+          <figure>
+            <div class="ip-board">
+              <p class="ip-board-text">Da experiência<br>do quadro verde…</p>
+              <div class="ip-board-icons" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5l10-5 10 5-10 5z"/><path d="M6 11.6v4.6c3 2.6 9 2.6 12 0v-4.6"/><path d="M20.5 10.3v5.2"/></svg>
+                <span class="is-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 4.9 6.5 4.6 3 5.2v13.3c3.5-.6 7-.3 9 1.3"/><path d="M12 6.5c2-1.6 5.5-1.9 9-1.3v13.3c-3.5-.6-7-.3-9 1.3"/><line x1="12" y1="6.5" x2="12" y2="19.8"/></svg>
+                <span class="is-accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.4 16.2c-.2-1.2-.7-1.9-1.5-2.7a5.4 5.4 0 1 1 8.2 0c-.8.8-1.3 1.5-1.5 2.7z"/><line x1="9.8" y1="18.6" x2="14.2" y2="18.6"/><line x1="10.6" y1="20.8" x2="13.4" y2="20.8"/></svg>
+              </div>
+            </div>
+            <figcaption class="ip-concept-caption">A vivência da sala de aula</figcaption>
+          </figure>
+
+          <svg class="ip-concept-arrow" viewBox="0 0 96 40" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 24 C28 8 56 8 84 20"></path>
+            <polyline points="70 8 86 20 70 32"></polyline>
+          </svg>
+
+          <figure>
+            <div class="ip-screen">
+              <img src="images/biblioteca/dashboard.png" alt="Tela inicial da Biblioteca Escolar, primeira ferramenta digital do Vem da Escola" width="1440" height="1912" loading="lazy">
+            </div>
+            <figcaption class="ip-concept-caption">…à ferramenta digital: a Biblioteca Escolar</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- D. Princípios -->
+    <section class="ip-section" id="principios" aria-labelledby="principios-title">
+      <div class="container">
+        <div class="ip-heading">
+          <span class="ip-kicker">Nossos princípios</span>
+          <h2 id="principios-title" class="ip-h2">O que orienta cada solução desenvolvida</h2>
+        </div>
+
+        <div class="ip-columns">
+          <div class="ip-column">
+            <span class="ip-glyph is-navy" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="2.8"/><circle cx="5.2" cy="9.6" r="2.2"/><circle cx="18.8" cy="9.6" r="2.2"/><path d="M7.6 19v-2.6a4.4 4.4 0 0 1 8.8 0V19"/><path d="M1.8 19v-1.8a3.4 3.4 0 0 1 5-3"/><path d="M22.2 19v-1.8a3.4 3.4 0 0 0-5-3"/></svg></span>
+            <span class="ip-eyebrow">Experiência</span>
+            <h3 class="ip-h3">Vivência prática</h3>
+            <p class="ip-text">Compreensão profunda das reais necessidades dos educadores, construída ao longo de décadas de trabalho pedagógico.</p>
           </div>
+          <div class="ip-column">
+            <span class="ip-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 4.9 6.5 4.6 3 5.2v13.3c3.5-.6 7-.3 9 1.3"/><path d="M12 6.5c2-1.6 5.5-1.9 9-1.3v13.3c-3.5-.6-7-.3-9 1.3"/><line x1="12" y1="6.5" x2="12" y2="19.8"/></svg></span>
+            <span class="ip-eyebrow">Simplicidade</span>
+            <h3 class="ip-h3">Soluções práticas</h3>
+            <p class="ip-text">Tecnologia não deve criar barreiras. Nossas ferramentas são intuitivas, diretas e resolvem a dor real da rotina escolar.</p>
+          </div>
+          <div class="ip-column">
+            <span class="ip-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 5.6a5.2 5.2 0 0 0-7.4 0L12 7l-1.4-1.4a5.2 5.2 0 0 0-7.4 7.4L12 21l8.8-8a5.2 5.2 0 0 0 0-7.4z"/></svg></span>
+            <span class="ip-eyebrow">Comunidade</span>
+            <h3 class="ip-h3">Diálogo e parceria</h3>
+            <p class="ip-text">Aproximação constante entre professores, equipes diretivas, alunos e famílias para construir uma escola acolhedora.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="about-pillars" style="grid-template-columns: repeat(3, 1fr); gap: var(--spacing-5);">
-            <div class="pillar-card" style="padding: var(--spacing-5);">
-              <div class="pillar-number">+30 anos*</div>
-              <h3 class="pillar-title" style="font-size: var(--font-size-md);">Vivência Prática</h3>
-              <p class="pillar-desc" style="font-size: var(--font-size-xs); line-height: 1.45;">
-                Compreensão profunda das reais necessidades dos educadores, construída ao longo de décadas de trabalho pedagógico.
-              </p>
-            </div>
-
-            <div class="pillar-card" style="padding: var(--spacing-5);">
-              <div class="pillar-number">Simplicidade</div>
-              <h3 class="pillar-title" style="font-size: var(--font-size-md);">Soluções Práticas</h3>
-              <p class="pillar-desc" style="font-size: var(--font-size-xs); line-height: 1.45;">
-                Tecnologia não deve criar barreiras. Nossas ferramentas são intuitivas, diretas e resolvem a dor real da rotina escolar.
-              </p>
-            </div>
-
-            <div class="pillar-card" style="padding: var(--spacing-5);">
-              <div class="pillar-number">Comunidade</div>
-              <h3 class="pillar-title" style="font-size: var(--font-size-md);">Diálogo &amp; Parceria</h3>
-              <p class="pillar-desc" style="font-size: var(--font-size-xs); line-height: 1.45;">
-                Aproximação constante entre professores, equipes diretivas, alunos e famílias para construir uma escola acolhedora.
-              </p>
+    <!-- E. Conexão com as famílias -->
+    <section class="ip-section is-peach" id="familias" aria-labelledby="fam-title">
+      <div class="container">
+        <div class="ip-split is-wide-left">
+          <div>
+            <span class="ip-kicker">Família e comunidade</span>
+            <h2 id="fam-title" class="ip-h2">A escola não se faz sozinha</h2>
+            <p class="ip-text">
+              O Vem da Escola também considera a participação dos responsáveis e da comunidade escolar. Mais diálogo entre família, escola e comunidade faz parte da proposta desde o início.
+            </p>
+            <div class="ip-actions">
+              <a href="familias.html" class="btn btn-outline-terracotta">
+                <span>Ver a página Para Famílias</span>
+                <span class="btn-icon-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </a>
             </div>
           </div>
-          <p class="pillar-footnote" style="text-align: center; margin-top: 16px;">*Indicador temporal histórico fundamentado na vivência prática da fundadora (sujeito à validação factual antes da publicação).</p>
+          <ul class="ip-audience is-stack">
+            <li><span class="ip-icon is-peach is-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="2.8"/><circle cx="5.2" cy="9.6" r="2.2"/><circle cx="18.8" cy="9.6" r="2.2"/><path d="M7.6 19v-2.6a4.4 4.4 0 0 1 8.8 0V19"/><path d="M1.8 19v-1.8a3.4 3.4 0 0 1 5-3"/><path d="M22.2 19v-1.8a3.4 3.4 0 0 0-5-3"/></svg></span>Famílias e responsáveis</li>
+            <li><span class="ip-icon is-blue is-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5l10-5 10 5-10 5z"/><path d="M6 11.6v4.6c3 2.6 9 2.6 12 0v-4.6"/><path d="M20.5 10.3v5.2"/></svg></span>Professores e equipes</li>
+            <li><span class="ip-icon is-yellow is-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10l9-5.5 9 5.5v10"/><path d="M9.5 20v-5h5v5"/><line x1="2" y1="20" x2="22" y2="20"/><circle cx="12" cy="10.2" r="1.3"/></svg></span>Gestão da escola</li>
+            <li><span class="ip-icon is-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 5.6a5.2 5.2 0 0 0-7.4 0L12 7l-1.4-1.4a5.2 5.2 0 0 0-7.4 7.4L12 21l8.8-8a5.2 5.2 0 0 0 0-7.4z"/></svg></span>Comunidade escolar</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- F. Citação institucional -->
+    <section class="ip-section" aria-label="Citação institucional">
+      <div class="container">
+        <blockquote class="ip-quote">
+          <p>Quando o conhecimento circula, a educação se fortalece.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- G. Chamada final -->
+    <section class="ip-section is-canvas is-tight" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="ip-band">
+          <span class="blob blob-blue shape-a band-b1" aria-hidden="true"></span>
+          <span class="blob blob-orange shape-arc band-b2" aria-hidden="true"></span>
+          <div class="ip-band-content">
+            <span class="ip-kicker">Soluções</span>
+            <h2 id="cta-title" class="ip-h2">Conheça a primeira ferramenta do Vem da Escola</h2>
+            <p class="ip-text">A Biblioteca Escolar é uma ferramenta gratuita para organizar e facilitar a gestão da biblioteca da escola.</p>
+            <div class="ip-actions">
+              <a href="ferramentas/biblioteca.html" class="btn btn-primary">
+                <span>Conhecer a Biblioteca Escolar</span>
+                <span class="btn-icon-right" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+              </a>
+              <a href="educadores.html" class="btn btn-secondary"><span>Para Educadores</span></a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -139,9 +257,11 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="images/logo-vem-da-escola.svg" alt="Vem da Escola" class="brand-logo-footer" width="502" height="315">
-          <p class="footer-desc">Transformando décadas de vivência na escola em soluções digitais acessíveis e organizadas.</p>
-          <div class="footer-quote">"Quando o conhecimento circula, a educação se fortalece."</div>
+          <p class="footer-desc">
+            Transformando décadas de vivência na escola em soluções digitais acessíveis, funcionais e organizadas para toda a comunidade educacional.
+          </p>
         </div>
+
         <div>
           <div class="footer-title">Navegação</div>
           <ul class="footer-links">
@@ -149,24 +269,33 @@
             <li><a href="educadores.html" class="footer-link">Para Educadores</a></li>
             <li><a href="familias.html" class="footer-link">Para Famílias</a></li>
             <li><a href="conteudos.html" class="footer-link">Conteúdos</a></li>
-            <li><a href="sobre.html" class="footer-link">Sobre</a></li>
+            <li><a href="sobre.html" class="footer-link">Sobre a Iniciativa</a></li>
           </ul>
         </div>
+
         <div>
           <div class="footer-title">Ferramentas</div>
           <ul class="footer-links">
             <li><a href="ferramentas/biblioteca.html" class="footer-link">Biblioteca Escolar</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Gestão de Acervo</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Circulação &amp; Empréstimos</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Relatórios Gerenciais</a></li>
           </ul>
         </div>
+
         <div>
           <div class="footer-title">Contato</div>
           <div class="footer-contact-info">
-            <p><a href="contato.html" class="footer-link" style="color: var(--color-terracotta); font-weight: 600;">Fale Conosco →</a></p>
+            <p>Diálogo com escolas, educadores, gestores e famílias:</p>
+            <p><a href="contato.html" class="footer-link is-accent">Fale Conosco →</a></p>
+            <p class="footer-note">Canais oficiais de diálogo dedicados a professores, gestores e famílias.</p>
           </div>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <p>&copy; 2026 Vem da Escola — Fundado por Fabby Assis.</p>
+        <p>&copy; 2026 Vem da Escola — Fundado por Fabby Assis. Todos os direitos reservados.</p>
+        <p>Desenvolvido com foco em acessibilidade e simplicidade operacional.</p>
       </div>
     </div>
   </footer>

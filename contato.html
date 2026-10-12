@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/inner.css">
 </head>
-<body>
+<body class="page-inner">
   <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
   <header class="site-header" role="banner">
@@ -60,37 +61,71 @@
   </header>
 
   <main id="conteudo-principal">
-    <section class="page-hero">
+    <!-- A. Abertura -->
+    <section class="ip-hero" aria-labelledby="page-title">
       <div class="container">
-        <div class="section-kicker">Canais de Diálogo</div>
-        <h1 class="page-hero-title">Fale Conosco</h1>
-        <p class="page-hero-subtitle">
-          Tem interesse em adotar o sistema de bibliotecas na sua escola ou quer compartilhar uma sugestão? Envie sua mensagem para nossa equipe.
-        </p>
+        <div class="ip-hero-grid">
+          <div>
+            <span class="ip-kicker">Contato</span>
+            <h1 id="page-title" class="ip-title">Vamos <span class="hl-stroke">conversar?</span></h1>
+            <p class="ip-lead">
+              O Vem da Escola quer ouvir quem vive a escola: dúvidas, sugestões e o interesse em conhecer a Biblioteca Escolar.
+            </p>
+
+            <!-- B. Públicos -->
+            <ul class="ip-audience section-gap" aria-label="Com quem o Vem da Escola dialoga">
+              <li><span class="ip-icon is-beige is-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10l9-5.5 9 5.5v10"/><path d="M9.5 20v-5h5v5"/><line x1="2" y1="20" x2="22" y2="20"/><circle cx="12" cy="10.2" r="1.3"/></svg></span>Escolas</li>
+              <li><span class="ip-icon is-blue is-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9.5l10-5 10 5-10 5z"/><path d="M6 11.6v4.6c3 2.6 9 2.6 12 0v-4.6"/><path d="M20.5 10.3v5.2"/></svg></span>Educadores</li>
+              <li><span class="ip-icon is-yellow is-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"/><rect x="5.5" y="12" width="3" height="5.5" rx=".6"/><rect x="10.5" y="8" width="3" height="9.5" rx=".6"/><rect x="15.5" y="4.5" width="3" height="13" rx=".6"/></svg></span>Gestores</li>
+              <li><span class="ip-icon is-peach is-sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="2.8"/><circle cx="5.2" cy="9.6" r="2.2"/><circle cx="18.8" cy="9.6" r="2.2"/><path d="M7.6 19v-2.6a4.4 4.4 0 0 1 8.8 0V19"/><path d="M1.8 19v-1.8a3.4 3.4 0 0 1 5-3"/><path d="M22.2 19v-1.8a3.4 3.4 0 0 0-5-3"/></svg></span>Famílias</li>
+            </ul>
+          </div>
+
+          <div class="ip-hero-art art-contact" aria-hidden="true">
+            <span class="blob blob-beige shape-a b1"></span>
+            <div class="ip-bubbles">
+              <span class="ip-bubble is-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a7.7 7.7 0 0 1-11.2 6.9L4 20l1.6-4.8A7.7 7.7 0 1 1 20.5 11.6z"/><line x1="9" y1="10" x2="15.5" y2="10"/><line x1="9" y1="13.4" x2="13.5" y2="13.4"/></svg></span>
+              <span class="ip-bubble is-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 5.6a5.2 5.2 0 0 0-7.4 0L12 7l-1.4-1.4a5.2 5.2 0 0 0-7.4 7.4L12 21l8.8-8a5.2 5.2 0 0 0 0-7.4z"/></svg></span>
+              <span class="ip-bubble is-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 4.9 6.5 4.6 3 5.2v13.3c3.5-.6 7-.3 9 1.3"/><path d="M12 6.5c2-1.6 5.5-1.9 9-1.3v13.3c-3.5-.6-7-.3-9 1.3"/><line x1="12" y1="6.5" x2="12" y2="19.8"/></svg></span>
+            </div>
+            <span class="blob blob-navy shape-pill b2"></span>
+            <svg class="ip-rays" viewBox="0 0 72 70" fill="none" stroke="#dd5024" stroke-width="11" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="36" x2="42" y2="64"/><line x1="40" y1="8" x2="66" y2="42"/></svg>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="page-content-section">
+    <!-- C/D. Formulário e estado de configuração -->
+    <section class="ip-section" id="formulario" aria-labelledby="form-title">
       <div class="container">
-        <div class="contact-grid">
-          <!-- Coluna 1: Formulário Seguro -->
-          <div>
-            <form id="contact-form" class="contact-form" novalidate>
-              <div id="contact-feedback" style="display: none; margin-bottom: var(--spacing-4);"></div>
+        <div class="ip-split is-wide-left is-top">
+          <form id="contact-form" class="ip-form" novalidate aria-describedby="contact-status">
+            <div id="contact-status" class="ip-note" role="note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16.5"/><circle cx="12" cy="7.8" r=".6" fill="currentColor"/></svg>
+              <div>
+                <h2 class="ip-note-title">Canal de contato em configuração</h2>
+                <p>O envio de mensagens ainda não está disponível. O formulário abaixo está desativado e nenhuma mensagem é enviada por esta página neste momento.</p>
+              </div>
+            </div>
+
+            <div id="contact-feedback" class="form-feedback" role="status" aria-live="polite"></div>
+
+            <fieldset id="contact-fieldset" disabled>
+              <legend id="form-title">Sua mensagem</legend>
 
               <div class="form-group">
-                <label for="contact-name" class="form-label">Nome Completo *</label>
-                <input type="text" id="contact-name" class="form-control" placeholder="Seu nome" required>
+                <label for="contact-name" class="form-label">Nome completo *</label>
+                <input type="text" id="contact-name" name="name" class="form-control" autocomplete="name" required aria-required="true">
               </div>
 
               <div class="form-group">
-                <label for="contact-email" class="form-label">E-mail para Retorno *</label>
-                <input type="email" id="contact-email" class="form-control" placeholder="exemplo@escola.gov.br" required>
+                <label for="contact-email" class="form-label">E-mail para retorno *</label>
+                <input type="email" id="contact-email" name="email" class="form-control" autocomplete="email" required aria-required="true">
               </div>
 
               <div class="form-group">
-                <label for="contact-role" class="form-label">Seu Papel na Educação</label>
-                <select id="contact-role" class="form-control">
+                <label for="contact-role" class="form-label">Seu papel na educação</label>
+                <select id="contact-role" name="role" class="form-control">
                   <option value="professor">Professor / Educador</option>
                   <option value="gestor">Gestor Escolar / Direção</option>
                   <option value="bibliotecario">Bibliotecário / Responsável pelo Acervo</option>
@@ -101,47 +136,38 @@
 
               <div class="form-group">
                 <label for="contact-subject" class="form-label">Assunto</label>
-                <input type="text" id="contact-subject" class="form-control" placeholder="Ex: Informações sobre o sistema de bibliotecas">
+                <input type="text" id="contact-subject" name="subject" class="form-control">
               </div>
 
               <div class="form-group">
                 <label for="contact-message" class="form-label">Mensagem *</label>
-                <textarea id="contact-message" class="form-control" placeholder="Descreva sua dúvida, necessidade ou comentário..." required></textarea>
+                <textarea id="contact-message" name="message" class="form-control" required aria-required="true"></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-                <span>Enviar Mensagem</span>
-                <span class="btn-icon-right" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                </span>
+              <button type="submit" id="contact-submit" class="btn btn-primary" disabled>
+                <span id="contact-submit-label">Envio indisponível no momento</span>
               </button>
-            </form>
-          </div>
+              <p class="form-hint">Campos marcados com * são obrigatórios.</p>
+            </fieldset>
+          </form>
 
-          <!-- Coluna 2: Informações de Atendimento Institucional -->
-          <div>
-            <div style="background-color: var(--color-canvas); padding: var(--spacing-6); border-radius: var(--radius-xl); border: 1px solid var(--color-card-border); margin-bottom: var(--spacing-5);">
-              <h2 style="font-size: var(--font-size-md); margin-bottom: var(--spacing-2);">Atendimento Institucional</h2>
-              <p style="color: var(--color-text-body); font-size: var(--font-size-xs); line-height: 1.55; margin-bottom: var(--spacing-4);">
-                O canal de atendimento está preparado para acolher demandas de implantação do sistema gratuito de bibliotecas em redes públicas, comunitárias e particulares.
-              </p>
-              <div style="font-size: var(--font-size-xs); color: var(--color-navy); display: flex; flex-direction: column; gap: var(--spacing-2);">
-                <p><strong>Público:</strong> Professores, gestores escolares, equipes pedagógicas e famílias.</p>
-                <p><strong>Status de Integração:</strong> Caixa postal oficial e endpoint de envio sob configuração institucional para a versão de publicação.</p>
-              </div>
-            </div>
+          <aside aria-label="Informações de contato">
+            <span class="ip-kicker">Enquanto isso</span>
+            <h2 class="ip-h2">Conheça o que já está disponível</h2>
+            <p class="ip-text">
+              O canal oficial de atendimento do Vem da Escola está sendo definido. Assim que for ativado, este formulário passará a funcionar e esta página será atualizada.
+            </p>
+            <p id="contact-email-channel" class="ip-text" hidden>
+              E-mail institucional: <a id="contact-email-link" class="ip-link" href="#formulario"></a>
+            </p>
 
-            <div style="background-color: var(--color-blue-tint); padding: var(--spacing-5); border-radius: var(--radius-xl); border: 1px solid var(--color-blue-border);">
-              <h3 style="font-size: 0.95rem; color: var(--color-navy); margin-bottom: var(--spacing-2);">Quer conhecer o sistema agora?</h3>
-              <p style="font-size: var(--font-size-xs); color: var(--color-text-body); line-height: 1.5; margin-bottom: var(--spacing-4);">
-                Acesse a apresentação da Biblioteca Escolar para visualizar os recursos e telas da aplicação.
-              </p>
-              <a href="ferramentas/biblioteca.html" class="btn btn-navy" style="font-size: 0.825rem;">Ver Apresentação da Biblioteca →</a>
+            <div class="ip-tile section-gap">
+              <span class="ip-icon is-peach" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="3.6" height="15" rx=".6"/><rect x="9" y="6.5" width="3.6" height="12.5" rx=".6"/><path d="M14.8 8.2l3.3-.9 3 11-3.3.9z"/><line x1="3" y1="20.5" x2="21.5" y2="20.5"/></svg></span>
+              <h3 class="ip-h3">Biblioteca Escolar</h3>
+              <p class="ip-text">Veja a apresentação da ferramenta gratuita, com suas funcionalidades e telas reais.</p>
+              <a href="ferramentas/biblioteca.html" class="ip-link">Ver a apresentação <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -152,9 +178,14 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="images/logo-vem-da-escola.svg" alt="Vem da Escola" class="brand-logo-footer" width="502" height="315">
-          <p class="footer-desc">Transformando décadas de vivência na escola em soluções digitais acessíveis e organizadas.</p>
-          <div class="footer-quote">"Quando o conhecimento circula, a educação se fortalece."</div>
+          <p class="footer-desc">
+            Transformando décadas de vivência na escola em soluções digitais acessíveis, funcionais e organizadas para toda a comunidade educacional.
+          </p>
+          <div class="footer-quote">
+            "Quando o conhecimento circula, a educação se fortalece."
+          </div>
         </div>
+
         <div>
           <div class="footer-title">Navegação</div>
           <ul class="footer-links">
@@ -162,24 +193,33 @@
             <li><a href="educadores.html" class="footer-link">Para Educadores</a></li>
             <li><a href="familias.html" class="footer-link">Para Famílias</a></li>
             <li><a href="conteudos.html" class="footer-link">Conteúdos</a></li>
-            <li><a href="sobre.html" class="footer-link">Sobre</a></li>
+            <li><a href="sobre.html" class="footer-link">Sobre a Iniciativa</a></li>
           </ul>
         </div>
+
         <div>
           <div class="footer-title">Ferramentas</div>
           <ul class="footer-links">
             <li><a href="ferramentas/biblioteca.html" class="footer-link">Biblioteca Escolar</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Gestão de Acervo</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Circulação &amp; Empréstimos</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Relatórios Gerenciais</a></li>
           </ul>
         </div>
+
         <div>
           <div class="footer-title">Contato</div>
           <div class="footer-contact-info">
-            <p><a href="contato.html" class="footer-link" style="color: var(--color-terracotta); font-weight: 600;">Fale Conosco →</a></p>
+            <p>Diálogo com escolas, educadores, gestores e famílias:</p>
+            <p><a href="contato.html" class="footer-link is-accent">Fale Conosco →</a></p>
+            <p class="footer-note">Canais oficiais de diálogo dedicados a professores, gestores e famílias.</p>
           </div>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <p>&copy; 2026 Vem da Escola — Fundado por Fabby Assis.</p>
+        <p>&copy; 2026 Vem da Escola — Fundado por Fabby Assis. Todos os direitos reservados.</p>
+        <p>Desenvolvido com foco em acessibilidade e simplicidade operacional.</p>
       </div>
     </div>
   </footer>
