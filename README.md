@@ -39,11 +39,13 @@ vem-da-escola-site/
 │   ├── variables.css           # Tokens do Design System (cores, tipografia, espaçamento)
 │   ├── base.css                # Reset semântico, utilitários, acessibilidade e foco
 │   ├── components.css          # Cabeçalho, menu mobile, cartões compactos, modal, rodapé
-│   ├── pages.css               # Estilos das páginas internas e da Biblioteca Escolar
+│   ├── pages.css               # Estilos legados compartilhados (formulário, grade de funcionalidades)
+│   ├── inner.css               # Componentes das páginas internas (aberturas, seções editoriais, galeria, contato)
 │   └── home.css                # Composição da Página Inicial nas proporções da prancha (unidade --u)
 ├── js/
 │   ├── config.js               # Centralização de configurações e URLs externas
-│   ├── main.js                 # Comportamento interativo (menu, rolagem, galeria, form seguro)
+│   ├── main.js                 # Comportamento interativo (menu, rolagem, galeria, acesso, formulário)
+│   ├── conteudos.js            # Lista de artigos publicados de conteudos.html (vazia por enquanto)
 │   └── search.js               # Pesquisa instantânea acessível com elemento <dialog>
 ├── images/
 │   ├── hero-educacao.jpg       # Fotografia ampla com enquadramento completo dos personagens
@@ -62,15 +64,16 @@ vem-da-escola-site/
 ├── index.html                  # Página Inicial (reprodução fiel da prancha aprovada)
 ├── educadores.html             # Página "Para Educadores"
 ├── familias.html               # Página "Para Famílias"
-├── conteudos.html              # Página "Conteúdos & Artigos"
+├── conteudos.html              # Página "Conteúdos" (temas editoriais e situação das publicações)
 ├── sobre.html                  # Página "Sobre a Iniciativa / História"
-├── contato.html                # Página "Contato & Atendimento"
+├── contato.html                # Página "Contato" (formulário desativado até a configuração do canal)
 ├── ferramentas/
 │   └── biblioteca.html         # Apresentação institucional da Biblioteca Escolar
 ├── docs/
 │   ├── arquitetura.md          # Especificação da arquitetura e tokens
 │   ├── navegacao.md            # Mapeamento completo das rotas e fluxos de usuário
 │   └── evidencias/             # Evidências de testes responsivos e comparações visuais
+│       └── paginas-internas/   # Capturas desktop (1440) e mobile (390) das seis páginas internas
 ├── referencias/
 │   └── wide_clean_modern_website_homepage_layout_with_w.png # Prancha visual aprovada (1672 × 941)
 ├── tests/
@@ -135,6 +138,7 @@ A cada execução são geradas capturas da Página Inicial em 1672, 1440, 1280, 
 > **Pendência factual:** o indicador "+30 anos de experiência na educação" reproduz a prancha aprovada e permanece **sujeito à confirmação factual pela fundadora antes da publicação**.
 
 Eles cobrem:
+- **Páginas internas (seis páginas × seis resoluções):** um único `h1`, hierarquia de títulos, textos alternativos, labels, nomes acessíveis, links e âncoras válidos, ausência de rolagem horizontal, de textos cortados e de sobreposição, alvos de toque de pelo menos 44 px e imagens carregadas.
 - **Integridade de Carregamento:** Todas as páginas internas (`index.html`, `biblioteca.html`, `educadores.html`, `familias.html`, `conteudos.html`, `sobre.html`, `contato.html`) carregam com status HTTP 200.
 - **Ausência de Erros no Console:** Zero warnings ou exceptions de JavaScript.
 - **Enquadramento das Imagens:** A foto do Hero (1408 × 580 px) é exibida inteira, sem recorte, preservando os quatro personagens e o quadro verde; a foto de Quem Somos carrega sem erros.
@@ -152,12 +156,19 @@ npm test
 
 ## 10. Organização das Páginas
 - `index.html`: Página principal com cabeçalho, logotipo oficial em duas linhas, hero com composição fotográfica ampla, 4 cartões compactos horizontais, seção "Quem Somos" com pilares de valor e citação oficial.
-- `ferramentas/biblioteca.html`: Apresentação institucional da Biblioteca Escolar dividida em 6 seções obrigatórias (Apresentação, Funcionalidades, Como Funciona, Telas Reais, Acesso e Retorno).
-- `educadores.html`: Conteúdos dedicados a professores e equipes diretivas.
-- `familias.html`: Orientações de leitura compartilhada e aproximação família-escola.
-- `conteudos.html`: Artigos e materiais práticos sobre educação e leitura.
-- `sobre.html`: História de Fabby Assis, pilares de atuação e manifesto institucional.
-- `contato.html`: Formulário seguro com validação e canais oficiais.
+- `ferramentas/biblioteca.html`: Apresentação do produto — o que é, para quem serve, benefícios, funcionalidades, galeria de telas (abas acessíveis e ampliação), como funciona, acesso e retorno.
+- `educadores.html`: Desafios da rotina, a Biblioteca Escolar como solução disponível e temas para educadores.
+- `familias.html`: Escola e família, leitura em casa, diálogo com a escola e tecnologia como apoio.
+- `conteudos.html`: Categorias editoriais, o que já está disponível no site e a lista de artigos publicados (vazia).
+- `sobre.html`: Fundadora, conceito "do quadro verde à inovação digital", princípios, famílias e citação institucional.
+- `contato.html`: Públicos atendidos e formulário preparado, desativado enquanto não houver canal de envio.
+
+As seis páginas internas usam `class="page-inner"` no `body` e os componentes de `css/inner.css`; a página inicial usa `class="page-home"` e `css/home.css`, e não carrega `inner.css`.
+
+### Pendências editoriais (dependem de confirmação humana)
+- Indicador "+30 anos" (home e `sobre.html`): sujeito à confirmação factual.
+- Orientações de leitura em casa e de diálogo com a escola (`familias.html`): textos institucionais simples, a serem revisados pela fundadora.
+- Funcionalidades listadas em `ferramentas/biblioteca.html`: herdadas da versão anterior da página; conferir com a aplicação antes da publicação.
 
 ---
 
@@ -176,11 +187,15 @@ const VDE_CONFIG = {
 
   // Canais de contato
   contact: {
-    email: null, // Sob configuração da caixa postal oficial
-    formEndpoint: null // Provedor de mensageria estática
+    email: null,        // quando preenchido, aparece em contato.html como link de e-mail
+    formEndpoint: null  // endpoint HTTPS de um serviço de formulários; habilita o formulário
   }
 };
 ```
+
+**Ativação do contato:** enquanto `formEndpoint` for `null`, o formulário de `contato.html` fica desativado e a página informa que o canal está em configuração; nada é enviado nem simulado. Ao preencher um endpoint HTTPS (serviço de formulários compatível com hospedagem estática, que receba `POST` em JSON com `name`, `email`, `role`, `subject` e `message`), o formulário é habilitado automaticamente, com validação dos campos.
+
+**Publicação de artigos:** acrescente um item ao array `VDE_ARTICLES` em `js/conteudos.js` (título, resumo, categoria, data e URL da página do artigo). Publique apenas textos escritos ou aprovados pela fundadora.
 
 ---
 
@@ -188,8 +203,8 @@ const VDE_CONFIG = {
 O fluxo de acesso segue a seguinte diretriz de experiência de usuário:
 1. O usuário acessa o site e clica em **"Acessar"** ou no **Cartão 4 (Ferramentas e Soluções)**.
 2. É encaminhado para `/ferramentas/biblioteca.html` onde conhece as funcionalidades do sistema e vê telas reais da interface.
-3. Clica no botão em destaque **"ACESSAR BIBLIOTECA"**.
-4. Se o domínio público estiver preenchido em `js/config.js`, o navegador abre a aplicação em nova aba. Em fase pré-produção, exibe aviso institucional transparente sobre a fase de homologação.
+3. Clica no botão em destaque **"Acessar Biblioteca"**.
+4. Se `libraryAppUrl` estiver preenchido com um endereço `https://` em `js/config.js`, o navegador abre a aplicação em nova aba. Enquanto estiver vazio, a página informa que o endereço público ainda não foi publicado e o botão abre um aviso, sem redirecionar.
 
 ---
 

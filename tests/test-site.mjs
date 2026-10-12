@@ -253,7 +253,14 @@ try {
   await accessBtn.click();
   await page.waitForTimeout(150);
   const homologationModalOpen = await page.locator('#homologation-dialog').evaluate(el => el ? el.open : false);
-  assert(homologationModalOpen, 'Aviso institucional de homologação/implantação exibido com segurança ao usuário');
+  assert(homologationModalOpen, 'Aviso informativo exibido quando o endereço público não está configurado');
+  const accessState = await page.evaluate(() => ({
+    status: document.getElementById('library-access-status').textContent,
+    stayed: location.pathname.endsWith('/ferramentas/biblioteca.html'),
+    dialogLinks: [...document.querySelectorAll('#homologation-dialog a')].map(a => a.getAttribute('href'))
+  }));
+  assert(/ainda não foi publicado/.test(accessState.status) && accessState.stayed, 'Acesso: página informa que o endereço público ainda não foi publicado e não redireciona');
+  assert(accessState.dialogLinks.every(h => h === '../contato.html'), 'Acesso: links do aviso usam caminho relativo válido');
   await page.keyboard.press('Escape');
 
   await page.screenshot({ path: path.join(evidenciasDir, '08_biblioteca_desktop_1440.png'), fullPage: true });
@@ -272,41 +279,263 @@ try {
   await page.screenshot({ path: path.join(evidenciasDir, '10_biblioteca_galeria_interativa.png') });
   console.log('  Capturado: 10_biblioteca_galeria_interativa.png');
 
-  // PÁGINAS AUXILIARES & INTEGRIDADE DE LINKS
-  console.log('\n--- 6. INTEGRIDADE DE LINKS E PÁGINAS AUXILIARES ---');
-  for (const pageName of ['educadores', 'familias', 'conteudos', 'sobre', 'contato']) {
-    const res = await page.goto(`${baseUrl}/${pageName}.html`, { waitUntil: 'networkidle' });
-    assert(res.status() === 200, `Página ${pageName}.html carregou com status 200`);
-    await page.screenshot({ path: path.join(evidenciasDir, `11_${pageName}_desktop.png`), fullPage: true });
-    console.log(`  Capturado: 11_${pageName}_desktop.png`);
+  const tabState = await page.evaluate(() => {
+    const tabs = [...document.querySelectorAll('.preview-tab-btn')];
+    return { count: tabs.length, selected: tabs.filter(b => b.getAttribute('aria-selected') === 'true').map(b => b.textContent.trim()) };
+  });
+  assert(tabState.count === 6 && tabState.selected.length === 1 && tabState.selected[0] === 'Acervo de Livros', 'Galeria: seis abas, com aria-selected apenas na aba ativa');
+
+  await tabBtn.press('ArrowRight');
+  const afterArrow = await page.locator('#preview-image').getAttribute('src');
+  assert(afterArrow.includes('exemplar.png'), 'Galeria: navegação por teclado (seta) troca a tela');
+
+  const galleryImgs = await page.evaluate(async () => {
+    const srcs = [...document.querySelectorAll('.preview-tab-btn')].map(b => b.getAttribute('data-image'));
+    const results = await Promise.all(srcs.map(src => new Promise(resolve => {
+      const img = new Image();
+      img.onload = () => resolve(img.naturalWidth > 0);
+      img.onerror = () => resolve(false);
+      img.src = src;
+    })));
+    return results.filter(Boolean).length;
+  });
+  assert(galleryImgs === 6, 'Galeria: as seis capturas reais da aplicação carregam');
+
+  await page.locator('[data-action="zoom-preview"]').click();
+  const lightboxOpen = await page.evaluate(() => {
+    const d = document.getElementById('preview-lightbox');
+    return d.open && document.getElementById('preview-lightbox-image').src.includes('exemplar.png');
+  });
+  assert(lightboxOpen, 'Galeria: botão Ampliar abre a captura em tamanho maior');
+  await page.keyboard.press('Escape');
+  assert(await page.evaluate(() => !document.getElementById('preview-lightbox').open), 'Galeria: ampliação fecha com Escape');
+
+  const dataNotice = await page.locator('#telas').textContent();
+  assert(/homologação/.test(dataNotice) && /fictícios/.test(dataNotice), 'Galeria: capturas identificadas como homologação com dados fictícios');
+
+  // PÁGINAS INTERNAS: ESTRUTURA, LINKS, IMAGENS, ACESSIBILIDADE E RESPONSIVIDADE
+  console.log('\n--- 6. PÁGINAS INTERNAS ---');
+  const internasDir = path.join(evidenciasDir, 'paginas-internas');
+  fs.mkdirSync(internasDir, { recursive: true });
+
+  const innerPages = [
+    { name: 'educadores', url: 'educadores.html' },
+    { name: 'familias', url: 'familias.html' },
+    { name: 'conteudos', url: 'conteudos.html' },
+    { name: 'sobre', url: 'sobre.html' },
+    { name: 'contato', url: 'contato.html' },
+    { name: 'biblioteca', url: 'ferramentas/biblioteca.html' }
+  ];
+  const innerViewports = [
+    { w: 1672, h: 941 }, { w: 1440, h: 900 }, { w: 1280, h: 800 },
+    { w: 768, h: 1024 }, { w: 390, h: 844 }, { w: 360, h: 780 }
+  ];
+  const checkedTargets = new Map();
+
+  for (const ip of innerPages) {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    const res = await page.goto(`${baseUrl}/${ip.url}`, { waitUntil: 'networkidle' });
+    assert(res.status() === 200, `${ip.name}: carregou com status 200`);
+
+    // Estrutura e acessibilidade básica
+    const a11y = await page.evaluate(() => {
+      const main = document.querySelector('main');
+      const headings = [...main.querySelectorAll('h1, h2, h3, h4')].map(h => Number(h.tagName[1]));
+      let skips = 0;
+      headings.forEach((lvl, i) => { if (i > 0 && lvl - headings[i - 1] > 1) skips++; });
+      const unnamed = [...document.querySelectorAll('a, button')].filter(el => !el.closest('[hidden]')).filter(el => {
+        const name = (el.getAttribute('aria-label') || el.textContent || '').trim();
+        return !name && !el.querySelector('img[alt]:not([alt=""])');
+      }).length;
+      const unlabeled = [...document.querySelectorAll('main input, main select, main textarea')].filter(f => !f.labels || !f.labels.length).length;
+      return {
+        lang: document.documentElement.lang,
+        h1: document.querySelectorAll('h1').length,
+        skips,
+        noAlt: [...main.querySelectorAll('img:not([alt])')].length,
+        emptyAltOutsideDecor: [...main.querySelectorAll('img[alt=""]')].filter(i => !i.closest('dialog')).length,
+        unnamed,
+        unlabeled,
+        inlineStyles: main.querySelectorAll('[style]').length,
+        landmarks: !!document.querySelector('header') && !!main && !!document.querySelector('footer') && !!document.querySelector('.skip-link'),
+        sameBrand: !!document.querySelector('.site-header .brand-logo[src$="logo-vem-da-escola.svg"]') && !!document.querySelector('.site-footer .footer-grid'),
+        navLinks: document.querySelectorAll('.nav-menu .nav-link').length
+      };
+    });
+    assert(a11y.lang === 'pt-BR' && a11y.landmarks, `${ip.name}: idioma, cabeçalho, main, rodapé e link de pular conteúdo presentes`);
+    assert(a11y.h1 === 1 && a11y.skips === 0, `${ip.name}: um único h1 e hierarquia de títulos sem saltos`);
+    assert(a11y.noAlt === 0 && a11y.emptyAltOutsideDecor === 0, `${ip.name}: todas as imagens de conteúdo têm texto alternativo`);
+    assert(a11y.unnamed === 0, `${ip.name}: links e botões têm nome acessível`);
+    assert(a11y.unlabeled === 0, `${ip.name}: campos de formulário têm label`);
+    assert(a11y.inlineStyles === 0, `${ip.name}: sem estilos inline no conteúdo`);
+    assert(a11y.sameBrand && a11y.navLinks === 6, `${ip.name}: logotipo, navegação e rodapé padronizados`);
+
+    // Links internos: arquivo existe e âncora existe
+    const links = await page.evaluate(() => [...document.querySelectorAll('a[href]')].map(a => ({ raw: a.getAttribute('href'), abs: a.href })));
+    const broken = [];
+    for (const l of links) {
+      if (/^(mailto:|tel:)/.test(l.raw)) { broken.push(`${l.raw} (canal não configurado)`); continue; }
+      const u = new URL(l.abs);
+      if (u.origin !== baseUrl) { broken.push(`${l.raw} (externo inesperado)`); continue; }
+      const key = u.pathname + u.hash;
+      if (!checkedTargets.has(key)) {
+        const filePath = path.join(rootDir, decodeURIComponent(u.pathname === '/' ? '/index.html' : u.pathname));
+        let ok = fs.existsSync(filePath) && fs.statSync(filePath).isFile();
+        if (ok && u.hash.length > 1) {
+          const html = fs.readFileSync(filePath, 'utf8');
+          ok = new RegExp(`id=["']${u.hash.slice(1)}["']`).test(html);
+        }
+        checkedTargets.set(key, ok);
+      }
+      if (!checkedTargets.get(key)) broken.push(l.raw);
+    }
+    assert(broken.length === 0, `${ip.name}: ${links.length} links com destino válido${broken.length ? ' — problemas: ' + broken.join(', ') : ''}`);
+
+    // Responsividade em todas as resoluções
+    for (const vp of innerViewports) {
+      await page.setViewportSize({ width: vp.w, height: vp.h });
+      await page.evaluate(async () => {
+        await document.fonts.ready;
+        for (const img of document.images) {
+          img.loading = 'eager';
+          if (!img.complete) await new Promise(r => { img.onload = img.onerror = r; });
+        }
+      });
+      await page.waitForTimeout(120);
+
+      const layout = await page.evaluate(() => {
+        const de = document.documentElement;
+        const main = document.querySelector('main');
+        const visible = el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0; };
+        const texts = [...main.querySelectorAll('.ip-lead, .ip-text, .ip-h3, .ip-kicker, .ip-chip, .btn, .ip-link, .form-label, .feature-card-title, .feature-card-desc, .preview-tab-btn, .ip-note p, .ip-checks li, .ip-audience li')].filter(visible);
+        const clipped = texts.filter(el => el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > el.clientHeight + 2).length;
+        const offscreen = texts.filter(el => { const r = el.getBoundingClientRect(); return r.left < -1 || r.right > de.clientWidth + 1; }).length;
+        const small = texts.filter(el => parseFloat(getComputedStyle(el).fontSize) < 12).length;
+        const brokenImgs = [...document.images].filter(i => !(i.complete && i.naturalWidth > 0)).length;
+        const targets = [...main.querySelectorAll('a.btn, button.btn, .preview-tab-btn, .ip-zoom-btn, .ip-link')].filter(visible);
+        const smallTargets = targets.filter(el => el.getBoundingClientRect().height < 44).length;
+        // Blocos de texto irmãos não podem se sobrepor
+        let overlaps = 0;
+        main.querySelectorAll('.ip-columns, .ip-tiles, .ip-steps, .ip-rows, .ip-status-grid, .features-grid, .ip-related, .ip-hero-grid > div:first-child').forEach(group => {
+          const boxes = [...group.children].filter(visible).map(c => c.getBoundingClientRect());
+          boxes.forEach((a, i) => boxes.forEach((b, j) => {
+            if (j > i && a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1) overlaps++;
+          }));
+        });
+        const logo = document.querySelector('.brand-logo').getBoundingClientRect();
+        return { sw: de.scrollWidth, cw: de.clientWidth, clipped, offscreen, small, brokenImgs, smallTargets, overlaps, logoH: logo.height };
+      });
+
+      const ok = layout.sw <= layout.cw && layout.clipped === 0 && layout.offscreen === 0 && layout.small === 0 &&
+        layout.brokenImgs === 0 && layout.smallTargets === 0 && layout.overlaps === 0 && layout.logoH >= 48;
+      assert(ok, `${ip.name} @ ${vp.w}px: sem rolagem horizontal, textos completos e legíveis, imagens carregadas, alvos de toque ≥ 44px, sem sobreposição` +
+        (ok ? '' : ` — ${JSON.stringify(layout)}`));
+
+      if (vp.w === 1440 || vp.w === 390) {
+        const suffix = vp.w === 1440 ? 'desktop_1440' : 'mobile_390';
+        await page.screenshot({ path: path.join(internasDir, `${ip.name}_${suffix}.png`), fullPage: true });
+        await page.screenshot({ path: path.join(internasDir, `${ip.name}_${suffix}_topo.png`), fullPage: false });
+        console.log(`  Capturado: paginas-internas/${ip.name}_${suffix}.png`);
+      }
+    }
   }
 
-  // TESTE DE SEGURANÇA E COMPORTAMENTO REAL DO FORMULÁRIO DE CONTATO
-  console.log('\n--- 7. FORMULÁRIO DE CONTATO & TESTE DE INJEÇÃO XSS ---');
-  await page.goto(`${baseUrl}/contato.html`);
+  // Menu mobile e busca em uma página interna
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`${baseUrl}/sobre.html`, { waitUntil: 'networkidle' });
+  await page.locator('.mobile-toggle').click();
+  assert(await page.locator('.nav-menu').evaluate(el => el.classList.contains('is-open')), 'Páginas internas: menu mobile abre');
+  await page.locator('.nav-menu .nav-link', { hasText: 'Para Famílias' }).click();
+  await page.waitForURL('**/familias.html');
+  assert(page.url().endsWith('/familias.html'), 'Páginas internas: navegação pelo menu mobile leva à página escolhida');
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.locator('[data-action="open-search"]').first().click();
+  assert(await page.locator('#search-dialog').evaluate(el => el.open), 'Páginas internas: busca abre em diálogo');
+  await page.keyboard.press('Escape');
 
-  // 1. Envio com campos vazios (validação segura)
-  await page.locator('button[type="submit"]').click();
-  const feedbackWarning = await page.locator('#contact-feedback').textContent();
-  assert(feedbackWarning.includes('campos obrigatórios'), 'Validação intercepta envio de formulário incompleto');
+  // Conteúdos: nada de artigos fictícios
+  await page.goto(`${baseUrl}/conteudos.html`, { waitUntil: 'networkidle' });
+  const contentState = await page.evaluate(() => ({
+    emptyVisible: !document.getElementById('articles-empty').hidden,
+    listHidden: document.getElementById('articles-list').hidden,
+    fakeCtas: [...document.querySelectorAll('main a')].filter(a => /ler (o )?artigo|ler reflex/i.test(a.textContent)).length
+  }));
+  assert(contentState.emptyVisible && contentState.listHidden, 'Conteúdos: sem artigos publicados, a página mostra o estado vazio');
+  assert(contentState.fakeCtas === 0, 'Conteúdos: nenhum botão de "ler artigo" sem artigo correspondente');
 
-  // 2. Teste de segurança contra XSS: injeta tags maliciosas
-  const xssPayload = '<script>alert("xss")</script><img src=x onerror=alert(1)>';
-  await page.fill('#contact-name', xssPayload);
-  await page.fill('#contact-email', 'teste@escola.gov.br');
-  await page.fill('#contact-message', 'Mensagem de teste de segurança');
-  await page.locator('button[type="submit"]').click();
-  await page.waitForTimeout(100);
+  // Comparação visual das seis páginas (identidade)
+  for (const [suffix, cols, cellW] of [['desktop_1440_topo', 3, 720], ['mobile_390_topo', 6, 300]]) {
+    const sheet = await context.newPage();
+    const cells = innerPages.map(ip => `<figure style="margin:0"><figcaption style="font:600 15px sans-serif;color:#152e44;margin:0 0 6px">${ip.url}</figcaption><img src="${baseUrl}/docs/evidencias/paginas-internas/${ip.name}_${suffix}.png" style="display:block;width:${cellW}px;border:1px solid #ddd"></figure>`).join('');
+    await sheet.setViewportSize({ width: cols * (cellW + 20) + 20, height: 800 });
+    await sheet.setContent(`<body style="margin:0;padding:20px;background:#fff"><div style="display:grid;grid-template-columns:repeat(${cols},${cellW}px);gap:20px">${cells}</div></body>`, { waitUntil: 'networkidle' });
+    const out = `comparacao_seis_paginas_${suffix.replace('_topo', '')}.png`;
+    await sheet.screenshot({ path: path.join(internasDir, out), fullPage: true });
+    await sheet.close();
+    console.log(`  Capturado: paginas-internas/${out}`);
+  }
 
-  // Verifica que nenhuma tag HTML foi interpretada (textContent apenas)
-  const injectedScripts = await page.locator('#contact-feedback script').count();
-  const injectedImgs = await page.locator('#contact-feedback img').count();
-  assert(injectedScripts === 0 && injectedImgs === 0, 'ZERO injeção de HTML/scripts no feedback do formulário (100% seguro)');
+  // FORMULÁRIO DE CONTATO
+  console.log('\n--- 7. FORMULÁRIO DE CONTATO ---');
+  await page.goto(`${baseUrl}/contato.html`, { waitUntil: 'networkidle' });
 
-  const preProdNotice = await page.locator('#contact-feedback').textContent();
-  assert(preProdNotice.includes('Integração de Mensageria em Configuração'), 'Aviso transparente de pré-produção exibido sem simular sucesso falso');
+  // 7.1 Estado atual (sem canal configurado): honesto e inoperante
+  const contactState = await page.evaluate(() => ({
+    fieldsetDisabled: document.getElementById('contact-fieldset').disabled,
+    submitDisabled: document.getElementById('contact-submit').disabled,
+    submitLabel: document.getElementById('contact-submit').textContent.trim(),
+    statusVisible: !document.getElementById('contact-status').hidden && document.getElementById('contact-status').getBoundingClientRect().height > 0,
+    statusText: document.getElementById('contact-status').textContent,
+    mailtos: document.querySelectorAll('a[href^="mailto:"]').length,
+    emailRowHidden: document.getElementById('contact-email-channel').hidden,
+    fields: ['contact-name', 'contact-email', 'contact-role', 'contact-subject', 'contact-message'].every(id => !!document.getElementById(id))
+  }));
+  assert(contactState.fields, 'Contato: os cinco campos originais foram preservados');
+  assert(contactState.fieldsetDisabled && contactState.submitDisabled, 'Contato: sem endpoint configurado, formulário e botão de envio ficam desativados');
+  assert(/indispon/i.test(contactState.submitLabel), `Contato: botão informa a indisponibilidade ("${contactState.submitLabel}")`);
+  assert(contactState.statusVisible && /ainda não está disponível/.test(contactState.statusText), 'Contato: aviso visível de canal em configuração');
+  assert(contactState.mailtos === 0 && contactState.emailRowHidden, 'Contato: nenhum mailto sem destinatário e nenhum e-mail inventado');
   await page.screenshot({ path: path.join(evidenciasDir, '12_contato_feedback.png') });
   console.log('  Capturado: 12_contato_feedback.png');
+
+  // 7.2 Ativação futura: com endpoint em js/config.js o formulário passa a validar e enviar
+  const mockEndpoint = 'https://formularios.exemplo.test/enviar';
+  const received = [];
+  const cfgPage = await context.newPage();
+  cfgPage.on('console', msg => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
+  await cfgPage.route('**/js/config.js', async route => {
+    const original = fs.readFileSync(path.join(rootDir, 'js', 'config.js'), 'utf8');
+    await route.fulfill({ contentType: 'application/javascript', body: original.replace('formEndpoint: null', `formEndpoint: "${mockEndpoint}"`) });
+  });
+  await cfgPage.route(mockEndpoint, async route => {
+    received.push(JSON.parse(route.request().postData()));
+    await route.fulfill({ status: 200, contentType: 'application/json', headers: { 'Access-Control-Allow-Origin': '*' }, body: '{"ok":true}' });
+  });
+  await cfgPage.goto(`${baseUrl}/contato.html`, { waitUntil: 'networkidle' });
+
+  const enabled = await cfgPage.evaluate(() => !document.getElementById('contact-fieldset').disabled && !document.getElementById('contact-submit').disabled && document.getElementById('contact-status').hidden);
+  assert(enabled, 'Contato (endpoint configurado): formulário habilitado e aviso de configuração oculto');
+
+  await cfgPage.locator('#contact-submit').click();
+  const feedbackWarning = await cfgPage.locator('#contact-feedback').textContent();
+  assert(feedbackWarning.includes('campos obrigatórios') && received.length === 0, 'Contato (endpoint configurado): validação intercepta envio incompleto');
+
+  await cfgPage.fill('#contact-name', 'Teste');
+  await cfgPage.fill('#contact-email', 'email-invalido');
+  await cfgPage.fill('#contact-message', 'Mensagem');
+  await cfgPage.locator('#contact-submit').click();
+  assert((await cfgPage.locator('#contact-feedback').textContent()).includes('e-mail válido') && received.length === 0, 'Contato (endpoint configurado): e-mail inválido é recusado');
+
+  const xssPayload = '<script>alert("xss")</script><img src=x onerror=alert(1)>';
+  await cfgPage.fill('#contact-name', xssPayload);
+  await cfgPage.fill('#contact-email', 'teste@escola.gov.br');
+  await cfgPage.fill('#contact-message', 'Mensagem de teste de segurança');
+  await cfgPage.locator('#contact-submit').click();
+  await cfgPage.waitForFunction(() => document.getElementById('contact-feedback').classList.contains('is-success'));
+  const injected = await cfgPage.locator('#contact-feedback script, #contact-feedback img').count();
+  assert(injected === 0, 'Contato: nenhum HTML é interpretado no retorno ao usuário (sem innerHTML)');
+  assert(received.length === 1 && received[0].name === xssPayload && received[0].email === 'teste@escola.gov.br', 'Contato (endpoint configurado): a mensagem é entregue ao endpoint uma única vez');
+  await cfgPage.close();
 
   // ERROS DE CONSOLE
   assert(consoleErrors.length === 0, `Nenhum erro de console encontrado (erros: ${consoleErrors.length})`);

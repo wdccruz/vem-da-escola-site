@@ -18,11 +18,13 @@ vem-da-escola-site/
 │   ├── variables.css           # Tokens de design, cores, tipografia e raios
 │   ├── base.css                # Reset moderno, utilitários, acessibilidade
 │   ├── components.css          # Cabeçalho, menu, botões, cartões, modal, rodapé
-│   ├── pages.css               # Estilos das páginas internas e da Biblioteca
+│   ├── pages.css               # Estilos legados compartilhados
+│   ├── inner.css               # Componentes das seis páginas internas
 │   └── home.css                # Composição da Página Inicial nas proporções da prancha
 ├── js/
 │   ├── config.js               # Centralização de URLs externas e configurações
-│   ├── main.js                 # Comportamento interativo (menu mobile, galeria, formulários)
+│   ├── main.js                 # Comportamento interativo (menu mobile, galeria, acesso, formulário)
+│   ├── conteudos.js            # Lista de artigos publicados (vazia por enquanto)
 │   └── search.js               # Busca instantânea client-side com diálogo <dialog> acessível
 ├── images/
 │   ├── hero-educacao.jpg       # Fotografia principal da prancha aprovada (otimizada 2x)
@@ -40,9 +42,9 @@ vem-da-escola-site/
 ├── index.html                  # Página Inicial (reprodução fiel da prancha aprovada)
 ├── educadores.html             # Página "Para Educadores"
 ├── familias.html               # Página "Para Famílias"
-├── conteudos.html              # Página "Conteúdos & Artigos"
+├── conteudos.html              # Página "Conteúdos"
 ├── sobre.html                  # Página "Sobre a Iniciativa"
-├── contato.html                # Página "Contato & Atendimento"
+├── contato.html                # Página "Contato"
 ├── ferramentas/
 │   └── biblioteca.html         # Apresentação institucional da Biblioteca Escolar
 ├── docs/

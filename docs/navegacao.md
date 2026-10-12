@@ -34,9 +34,9 @@ Conforme especificado nos requisitos, novos visitantes e interessados na platafo
 | **Início** | `/index.html` | Homepage com Hero, 4 Cartões e Quem Somos |
 | **Para Educadores** | `/educadores.html` | Conteúdos e ferramentas para a rotina pedagógica |
 | **Para Famílias** | `/familias.html` | Orientações de leitura e parceria escola-família |
-| **Conteúdos** | `/conteudos.html` | Artigos e guias práticos sobre a prática escolar |
+| **Conteúdos** | `/conteudos.html` | Temas editoriais e situação das publicações (sem artigos publicados) |
 | **Sobre** | `/sobre.html` | Trajetória de Fabby Assis, pilares e manifesto |
-| **Contato** | `/contato.html` | Formulário funcional e canais de atendimento |
+| **Contato** | `/contato.html` | Públicos e formulário preparado, desativado até a configuração do canal |
 | **Pesquisa** | Diálogo `<dialog>` | Busca instantânea por qualquer tema do site |
 | **Biblioteca Escolar** | `/ferramentas/biblioteca.html` | Página de apresentação do produto 1 |
 | **Aplicação Externa** | Configurado em `js/config.js` | Sistema web de gestão de bibliotecas escolares |
