@@ -18,7 +18,8 @@ vem-da-escola-site/
 │   ├── variables.css           # Tokens de design, cores, tipografia e raios
 │   ├── base.css                # Reset moderno, utilitários, acessibilidade
 │   ├── components.css          # Cabeçalho, menu, botões, cartões, modal, rodapé
-│   └── pages.css               # Estilos de páginas específicas (Hero, Quem Somos, Biblioteca)
+│   ├── pages.css               # Estilos das páginas internas e da Biblioteca
+│   └── home.css                # Composição da Página Inicial nas proporções da prancha
 ├── js/
 │   ├── config.js               # Centralização de URLs externas e configurações
 │   ├── main.js                 # Comportamento interativo (menu mobile, galeria, formulários)
@@ -26,7 +27,8 @@ vem-da-escola-site/
 ├── images/
 │   ├── hero-educacao.jpg       # Fotografia principal da prancha aprovada (otimizada 2x)
 │   ├── quem-somos-professora.jpg # Fotografia da seção Quem Somos (lousa digital)
-│   ├── logo-vem-da-escola.svg  # Logotipo vetorial oficial com traço e elementos decorativos
+│   ├── hero-mask.svg           # Máscara da fotografia do hero (dissolve a borda esquerda)
+│   ├── logo-vem-da-escola.svg  # Logotipo vetorizado a partir da prancha (não é o arquivo-mestre)
 │   ├── favicon.svg             # Favicon vetorial da plataforma
 │   └── biblioteca/             # Capturas reais da aplicação de bibliotecas
 │       ├── dashboard.png
@@ -48,7 +50,7 @@ vem-da-escola-site/
 │   ├── navegacao.md            # Mapeamento detalhado dos fluxos de navegação
 │   └── evidencias/             # Capturas reais da execução e testes responsivos
 └── tests/
-    └── test_site.py            # Suíte de testes automatizados com Playwright
+    └── test-site.mjs           # Testes Playwright, capturas responsivas e comparação com a prancha
 ```
 
 ---

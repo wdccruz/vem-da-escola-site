@@ -7,7 +7,15 @@
     "test": "node tests/test-site.mjs",
     "serve": "npx serve ."
   },
-  "keywords": ["educacao", "institucional", "vem-da-escola", "biblioteca"],
+  "keywords": [
+    "educacao",
+    "institucional",
+    "vem-da-escola",
+    "biblioteca"
+  ],
   "author": "Vem da Escola",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "playwright": "^1.64.0"
+  }
 }

@@ -39,7 +39,8 @@ vem-da-escola-site/
 │   ├── variables.css           # Tokens do Design System (cores, tipografia, espaçamento)
 │   ├── base.css                # Reset semântico, utilitários, acessibilidade e foco
 │   ├── components.css          # Cabeçalho, menu mobile, cartões compactos, modal, rodapé
-│   └── pages.css               # Estilos da Home (Hero, Quem Somos) e da Biblioteca Escolar
+│   ├── pages.css               # Estilos das páginas internas e da Biblioteca Escolar
+│   └── home.css                # Composição da Página Inicial nas proporções da prancha (unidade --u)
 ├── js/
 │   ├── config.js               # Centralização de configurações e URLs externas
 │   ├── main.js                 # Comportamento interativo (menu, rolagem, galeria, form seguro)
@@ -47,8 +48,9 @@ vem-da-escola-site/
 ├── images/
 │   ├── hero-educacao.jpg       # Fotografia ampla com enquadramento completo dos personagens
 │   ├── quem-somos-professora.jpg # Fotografia pura da professora diante da lousa digital
-│   ├── logo-vem-da-escola.svg  # Logotipo oficial em duas linhas com traço e centelhas
-│   ├── logo-vem-da-escola.png  # Logotipo transparente em alta definição
+│   ├── hero-mask.svg           # Máscara que dissolve a borda esquerda da fotografia do hero
+│   ├── logo-vem-da-escola.svg  # Logotipo vetorizado a partir da prancha (não é o arquivo-mestre da marca)
+│   ├── logo-vem-da-escola.png  # Versão PNG transparente gerada a partir do SVG
 │   ├── favicon.svg             # Favicon da plataforma
 │   └── biblioteca/             # Capturas reais da aplicação de bibliotecas
 │       ├── dashboard.png
@@ -69,9 +71,10 @@ vem-da-escola-site/
 │   ├── arquitetura.md          # Especificação da arquitetura e tokens
 │   ├── navegacao.md            # Mapeamento completo das rotas e fluxos de usuário
 │   └── evidencias/             # Evidências de testes responsivos e comparações visuais
+├── referencias/
+│   └── wide_clean_modern_website_homepage_layout_with_w.png # Prancha visual aprovada (1672 × 941)
 ├── tests/
-│   ├── test-site.mjs           # Bateria automatizada de testes Playwright portáteis
-│   └── generate_comparisons.py # Gerador de comparações lado a lado
+│   └── test-site.mjs           # Testes Playwright, capturas responsivas e comparação com a prancha
 └── package.json                # Gerenciamento de scripts e comandos portáteis
 ```
 
@@ -116,6 +119,7 @@ Por se tratar de uma arquitetura estática pura de alto desempenho, os próprios
 
 A validação completa da integridade dos arquivos estáticos é executada via:
 ```bash
+npm install   # instala o Playwright (devDependency)
 npm test
 # ou diretamente:
 node tests/test-site.mjs
@@ -124,12 +128,16 @@ node tests/test-site.mjs
 ---
 
 ## 9. Execução dos Testes Automatizados
-Os testes automatizados foram construídos com Playwright de forma totalmente reproduzível e independente de caminhos locais do desenvolvedor.
+Os testes automatizados usam o Playwright declarado em `package.json` (`npm install`), sem caminhos locais do desenvolvedor. O navegador é o Chromium do Playwright (`npx playwright install chromium`) ou, na ausência dele, o Edge ou o Chrome já instalados no sistema.
+
+A cada execução são geradas capturas da Página Inicial em 1672, 1440, 1280, 768, 390 e 360 px e a comparação `docs/evidencias/comparacao_prancha_vs_implementacao_1672.png` (prancha × navegador real). Em cada resolução verifica-se ausência de rolagem horizontal, de textos cortados, de imagens deformadas e de sobreposição de cartões. A comparação visual é insumo para a aprovação humana; os testes não substituem a homologação visual.
+
+> **Pendência factual:** o indicador "+30 anos de experiência na educação" reproduz a prancha aprovada e permanece **sujeito à confirmação factual pela fundadora antes da publicação**.
 
 Eles cobrem:
 - **Integridade de Carregamento:** Todas as páginas internas (`index.html`, `biblioteca.html`, `educadores.html`, `familias.html`, `conteudos.html`, `sobre.html`, `contato.html`) carregam com status HTTP 200.
 - **Ausência de Erros no Console:** Zero warnings ou exceptions de JavaScript.
-- **Enquadramento e Resolução das Imagens:** A foto do Hero é ampla (1256px de largura) e preserva todos os personagens e o quadro verde; a foto de Quem Somos é independente e livre de elementos de interface.
+- **Enquadramento das Imagens:** A foto do Hero (1408 × 580 px) é exibida inteira, sem recorte, preservando os quatro personagens e o quadro verde; a foto de Quem Somos carrega sem erros.
 - **Ausência de Redirecionamento para Localhost:** Garantia de que o botão "ACESSAR BIBLIOTECA" não redireciona o visitante indevidamente para `localhost` antes da homologação final.
 - **Comportamento Real do Formulário:** Validação dos campos obrigatórios e sanitização total contra injeção de scripts (XSS).
 - **Transparência de Pré-produção:** Informação clara sobre o status de configuração da mensageria institucional, sem mensagens de confirmação falsas.

@@ -7,37 +7,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-// Resolução portátil do Playwright (compatível com CI/CD e ambientes locais)
-let playwrightModule;
+// Playwright é devDependency do projeto (npm install).
+let chromium;
 try {
-  // 1. Tenta carregar do node_modules padrão
-  playwrightModule = await import('playwright');
+  ({ chromium } = await import('playwright'));
 } catch {
-  // 2. Fallback portátil via variável de ambiente ou caminho de suporte local
-  const candidatePaths = [
-    process.env.PLAYWRIGHT_PATH,
-    'C:/Users/wdccr/Documents/ChatGPT/fabby/vde-rc3-browser/node_modules/playwright',
-    path.join(rootDir, 'node_modules', 'playwright')
-  ].filter(Boolean);
-
-  for (const p of candidatePaths) {
-    if (fs.existsSync(p)) {
-      try {
-        playwrightModule = await import(`file://${p.replace(/\\/g, '/')}/index.mjs`);
-        break;
-      } catch {
-        // continua tentando
-      }
-    }
-  }
-}
-
-if (!playwrightModule || !playwrightModule.chromium) {
-  console.error('[ERRO] Playwright não foi localizado. Defina PLAYWRIGHT_PATH ou instale via npm install playwright.');
+  console.error('[ERRO] Playwright não foi localizado. Execute "npm install" na raiz do projeto.');
   process.exit(1);
 }
-
-const { chromium } = playwrightModule;
 
 // 1. Servidor HTTP Local
 const MIME_TYPES = {
@@ -92,14 +69,22 @@ function assert(condition, message) {
   }
 }
 
-// 2. Inicialização Portátil do Navegador
-const launchOptions = { headless: true };
-const systemEdge = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
-if (fs.existsSync(systemEdge)) {
-  launchOptions.executablePath = systemEdge;
+// 2. Inicialização do navegador: Chromium do Playwright ou, na falta dele,
+//    um navegador já instalado no sistema (Edge ou Chrome).
+async function launchBrowser() {
+  const attempts = [{}, { channel: 'msedge' }, { channel: 'chrome' }];
+  let lastError;
+  for (const options of attempts) {
+    try {
+      return await chromium.launch({ headless: true, ...options });
+    } catch (err) {
+      lastError = err;
+    }
+  }
+  throw lastError;
 }
 
-const browser = await chromium.launch(launchOptions);
+const browser = await launchBrowser();
 
 try {
   const context = await browser.newContext();
@@ -127,50 +112,99 @@ try {
   const heroTitle = await page.textContent('#hero-title');
   assert(heroTitle.includes('Conhecimento que nasce da experiência'), 'Título do Hero reproduz texto aprovado');
 
-  const cardsCount = await page.locator('.info-card').count();
+  const cardsCount = await page.locator('.home-card').count();
   assert(cardsCount === 4, 'Exatamente 4 cartões de soluções presentes na Home');
 
   const aboutTitle = await page.textContent('#about-title');
   assert(aboutTitle.includes('Da experiência real para uma educação mais viva'), 'Título Quem Somos reproduz a prancha');
 
-  const pillarsCount = await page.locator('.pillar-card').count();
-  assert(pillarsCount === 3, 'Exatamente 3 pilares de valor presentes');
+  const pillarsCount = await page.locator('.home-indicator').count();
+  assert(pillarsCount === 3, 'Exatamente 3 indicadores presentes');
+
+  const toolsHref = await page.locator('#card-ferramentas').getAttribute('href');
+  assert(toolsHref === 'ferramentas/biblioteca.html', 'Cartão Ferramentas e Soluções aponta para a apresentação da biblioteca');
+
+  const quoteCount = await page.locator('main').getByText('Quando o conhecimento circula, a educação se fortalece.').count();
+  assert(quoteCount === 1, 'Citação aparece uma única vez na composição principal');
 
   // Integridade e Enquadramento das Fotos
   const heroImgData = await page.evaluate(() => {
-    const img = document.querySelector('.hero-image-wrapper img');
+    const img = document.querySelector('.home-hero-media img');
     return img ? { loaded: img.complete && img.naturalWidth > 0, width: img.naturalWidth, height: img.naturalHeight } : null;
   });
   assert(heroImgData && heroImgData.loaded, 'Fotografia do Hero carregou perfeitamente');
   assert(heroImgData && heroImgData.width >= 1000, `Fotografia do Hero possui enquadramento amplo e alta resolução (${heroImgData.width}px)`);
 
   const qsImgData = await page.evaluate(() => {
-    const img = document.querySelector('.about-image-wrapper img');
+    const img = document.querySelector('.home-about-media img');
     return img ? { loaded: img.complete && img.naturalWidth > 0, width: img.naturalWidth, height: img.naturalHeight } : null;
   });
   assert(qsImgData && qsImgData.loaded, 'Fotografia Quem Somos carregou perfeitamente sem artefatos');
 
-  // CAPTURAS RESPONSIVAS DA HOME
+  // CAPTURAS RESPONSIVAS DA HOME + VERIFICAÇÕES DE LAYOUT
   console.log('\n--- 2. CAPTURAS RESPONSIVAS DA HOME ---');
-  await page.setViewportSize({ width: 1440, height: 900 });
-  await page.screenshot({ path: path.join(evidenciasDir, '01_home_desktop_1440.png'), fullPage: true });
-  console.log('  Capturado: 01_home_desktop_1440.png');
+  const viewports = [
+    { w: 1672, h: 941, file: '00_home_prancha_1672.png', fullPage: false },
+    { w: 1440, h: 900, file: '01_home_desktop_1440.png', fullPage: true },
+    { w: 1280, h: 800, file: '02_home_laptop_1280.png', fullPage: true },
+    { w: 768, h: 1024, file: '03_home_tablet_768.png', fullPage: true },
+    { w: 390, h: 844, file: '04_home_mobile_390.png', fullPage: true },
+    { w: 360, h: 780, file: '05_home_mobile_360.png', fullPage: true }
+  ];
 
-  await page.setViewportSize({ width: 1280, height: 800 });
-  await page.screenshot({ path: path.join(evidenciasDir, '02_home_laptop_1280.png'), fullPage: true });
-  console.log('  Capturado: 02_home_laptop_1280.png');
+  for (const vp of viewports) {
+    await page.setViewportSize({ width: vp.w, height: vp.h });
+    await page.evaluate(() => document.fonts.ready);
+    await page.waitForTimeout(150);
 
-  await page.setViewportSize({ width: 768, height: 1024 });
-  await page.screenshot({ path: path.join(evidenciasDir, '03_home_tablet_768.png'), fullPage: true });
-  console.log('  Capturado: 03_home_tablet_768.png');
+    const layout = await page.evaluate(() => {
+      const de = document.documentElement;
+      // Títulos de entrelinha fechada ficam fora: neles scrollHeight excede a caixa sem haver corte.
+      const textSel = '.home-hero-subtitle, .home-card-title, .home-card-desc, .home-about-text, .home-indicator-title, .home-indicator-desc, .home-quote-text';
+      const clipped = [...document.querySelectorAll(textSel)].filter(el => {
+        const cs = getComputedStyle(el);
+        const clamped = cs.webkitLineClamp && cs.webkitLineClamp !== 'none';
+        return clamped || el.scrollHeight > el.clientHeight + 1 || el.scrollWidth > el.clientWidth + 1;
+      }).length;
+      const distorted = [...document.querySelectorAll('.home-hero-media img, .brand-logo')].filter(img => {
+        const r = img.getBoundingClientRect();
+        return Math.abs(r.width / r.height - img.naturalWidth / img.naturalHeight) > 0.02;
+      }).length;
+      const heroImg = document.querySelector('.home-hero-media img').getBoundingClientRect();
+      const cards = [...document.querySelectorAll('.home-card')].map(c => c.getBoundingClientRect());
+      const cardsOverlap = cards.some((a, i) => cards.some((b, j) => j > i && a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1));
+      return { scrollW: de.scrollWidth, clientW: de.clientWidth, clipped, distorted, heroLeft: heroImg.left, heroRight: heroImg.right, cardsOverlap };
+    });
 
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.screenshot({ path: path.join(evidenciasDir, '04_home_mobile_390.png'), fullPage: true });
-  console.log('  Capturado: 04_home_mobile_390.png');
+    assert(layout.scrollW <= layout.clientW, `${vp.w}px: sem rolagem horizontal`);
+    assert(layout.clipped === 0, `${vp.w}px: nenhum texto cortado ou truncado`);
+    assert(layout.distorted === 0, `${vp.w}px: fotografia principal e logotipo sem deformação`);
+    assert(layout.heroLeft >= -1 && layout.heroRight <= layout.clientW + 1, `${vp.w}px: fotografia principal inteira dentro da viewport (família não cortada)`);
+    assert(!layout.cardsOverlap, `${vp.w}px: cartões sem sobreposição`);
+
+    await page.screenshot({ path: path.join(evidenciasDir, vp.file), fullPage: vp.fullPage });
+    console.log(`  Capturado: ${vp.file}`);
+  }
+
+  // COMPARAÇÃO LADO A LADO COM A PRANCHA APROVADA
+  const pranchaRel = 'referencias/wide_clean_modern_website_homepage_layout_with_w.png';
+  if (fs.existsSync(path.join(rootDir, pranchaRel))) {
+    const cmp = await context.newPage();
+    await cmp.setViewportSize({ width: 1712, height: 1000 });
+    await cmp.setContent(`<body style="margin:0;padding:20px;background:#fff;font:600 15px sans-serif;color:#152e44">
+      <p style="margin:0 0 8px">A. PRANCHA APROVADA (1672 × 941)</p>
+      <img src="${baseUrl}/${pranchaRel}" style="display:block;width:1672px;border:1px solid #ddd">
+      <p style="margin:24px 0 8px">B. IMPLEMENTAÇÃO — NAVEGADOR REAL (1672 × 941)</p>
+      <img src="${baseUrl}/docs/evidencias/00_home_prancha_1672.png" style="display:block;width:1672px;border:1px solid #ddd">
+    </body>`, { waitUntil: 'networkidle' });
+    await cmp.screenshot({ path: path.join(evidenciasDir, 'comparacao_prancha_vs_implementacao_1672.png'), fullPage: true });
+    await cmp.close();
+    console.log('  Capturado: comparacao_prancha_vs_implementacao_1672.png');
+  } else {
+    console.log('  (prancha de referência ausente — comparação não gerada)');
+  }
 
   await page.setViewportSize({ width: 360, height: 780 });
-  await page.screenshot({ path: path.join(evidenciasDir, '05_home_mobile_360.png'), fullPage: true });
-  console.log('  Capturado: 05_home_mobile_360.png');
 
   // MENU MOBILE
   console.log('\n--- 3. MENU MOBILE RESPONSIVO ---');
