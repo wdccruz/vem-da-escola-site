@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1408 580" preserveAspectRatio="none">
+  <!-- Máscara da fotografia do hero: dissolve a borda esquerda e oculta sobras do recorte
+       (raios cortados e resto de botão), que são redesenhados em HTML/SVG na página. -->
+  <defs>
+    <filter id="f" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+    <mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="1408" height="580">
+      <rect width="1408" height="580" fill="#fff"/>
+      <g fill="#000" filter="url(#f)">
+        <rect x="-40" y="-40" width="58" height="660"/>
+        <rect x="-40" y="28" width="116" height="142"/>
+        <rect x="-40" y="476" width="72" height="140"/>
+      </g>
+    </mask>
+  </defs>
+  <rect width="1408" height="580" fill="#000" mask="url(#m)"/>
+</svg>

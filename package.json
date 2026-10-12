@@ -1,0 +1,21 @@
+{
+  "name": "vem-da-escola-site",
+  "version": "1.0.0",
+  "description": "Site institucional da iniciativa Vem da Escola",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/test-site.mjs",
+    "serve": "npx serve ."
+  },
+  "keywords": [
+    "educacao",
+    "institucional",
+    "vem-da-escola",
+    "biblioteca"
+  ],
+  "author": "Vem da Escola",
+  "license": "MIT",
+  "devDependencies": {
+    "playwright": "^1.64.0"
+  }
+}

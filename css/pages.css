@@ -1,0 +1,621 @@
+/* ==========================================================================
+   VEM DA ESCOLA — PÁGINAS CSS (v1 Corrigido)
+   Ajuste fino de proporções conforme a prancha aprovada
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   3. Seção Quem Somos (página Sobre) — a página inicial está em css/home.css
+   -------------------------------------------------------------------------- */
+.section-about {
+  padding-top: var(--spacing-8);
+  padding-bottom: var(--spacing-10);
+  background-color: var(--color-canvas);
+  border-top: 1px solid var(--color-border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.25fr 1.15fr;
+  align-items: start;
+  gap: var(--spacing-6);
+}
+
+/* Fotografia da Professora sangrando ou integrada à esquerda */
+.about-media {
+  position: relative;
+  width: 100%;
+}
+
+.about-image-wrapper {
+  width: 100%;
+  border-radius: 0 24px 24px 0;
+  overflow: hidden;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+.about-image-wrapper img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 680 / 316;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 24px 24px 0;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-kicker {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: 0.08em;
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-2);
+  text-transform: uppercase;
+}
+
+.about-title {
+  font-family: var(--font-family-display);
+  font-size: clamp(1.65rem, 2.3vw, 2.15rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.2;
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-3);
+  letter-spacing: -0.02em;
+}
+
+.about-title .highlight {
+  color: var(--color-terracotta);
+  position: relative;
+  display: inline-block;
+}
+
+.about-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-terracotta);
+  border-radius: 2px;
+}
+
+.about-text {
+  font-size: 0.935rem;
+  color: var(--color-text-body);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-5);
+}
+
+.about-actions {
+  margin-bottom: var(--spacing-4);
+}
+
+/* Coluna Direita: Indicadores e Citação Integrada */
+.about-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.about-indicators {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: 14px;
+  margin-bottom: 8px;
+}
+
+.pillar-card {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  padding: 4px 6px;
+  text-align: left;
+}
+
+.pillar-card:not(:last-child) {
+  border-right: 1px solid var(--color-border-subtle);
+}
+
+.pillar-icon {
+  color: var(--color-navy);
+  margin-bottom: 6px;
+}
+
+.pillar-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.pillar-number {
+  font-family: var(--font-family-display);
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-navy);
+  line-height: 1.25;
+  margin-bottom: 2px;
+}
+
+.pillar-desc {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  line-height: 1.35;
+}
+
+.pillar-footnote {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-4);
+}
+
+/* Citação Integrada no Canto Inferior Direito com Aspas Laranja */
+.about-quote-box {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  position: relative;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.quote-mark {
+  font-family: Georgia, serif;
+  font-size: 2.8rem;
+  line-height: 0.8;
+  color: var(--color-terracotta);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.about-quote-text {
+  font-size: 0.885rem;
+  font-weight: var(--font-weight-semibold);
+  font-style: italic;
+  color: var(--color-navy);
+  line-height: 1.45;
+}
+
+.quote-underline {
+  display: block;
+  width: 48px;
+  height: 3px;
+  background-color: var(--color-terracotta);
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   4. Página de Apresentação da Biblioteca Escolar (/ferramentas/biblioteca.html)
+   -------------------------------------------------------------------------- */
+.library-hero {
+  padding-top: var(--spacing-10);
+  padding-bottom: var(--spacing-10);
+  background: linear-gradient(180deg, #faf8f5 0%, #f4eee6 100%);
+  border-bottom: 1px solid var(--color-border-subtle);
+  text-align: center;
+}
+
+.library-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background-color: var(--color-terracotta-light);
+  color: var(--color-terracotta);
+  border: 1px solid var(--color-terracotta-subtle);
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-3);
+}
+
+.library-hero-title {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-2);
+}
+
+.library-hero-subtitle {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  color: var(--color-text-body);
+  max-width: 680px;
+  margin: 0 auto var(--spacing-6);
+  line-height: var(--line-height-normal);
+}
+
+.library-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+/* Seção de Funcionalidades */
+.section-features {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+  background-color: var(--color-white);
+}
+
+.section-heading-center {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto var(--spacing-10);
+}
+
+.section-kicker {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-terracotta);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--spacing-2);
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-2);
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-5);
+}
+
+.feature-card {
+  background-color: var(--color-canvas);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-5);
+  transition: all var(--transition-normal);
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  background-color: var(--color-white);
+  border-color: var(--color-blue-border);
+}
+
+.feature-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-blue-tint);
+  color: var(--color-blue-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-3);
+}
+
+.feature-icon-box svg {
+  width: 20px;
+  height: 20px;
+}
+
+.feature-card-title {
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-2);
+}
+
+.feature-card-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-body);
+  line-height: 1.5;
+}
+
+/* Como Funciona */
+.section-how-it-works {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+  background-color: var(--color-canvas);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-6);
+}
+
+.step-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6) var(--spacing-5);
+  text-align: center;
+}
+
+.step-number {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-extrabold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-3);
+}
+
+.step-title {
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-1);
+}
+
+.step-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-body);
+  line-height: 1.5;
+}
+
+/* Telas do Sistema */
+.section-system-preview {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+  background-color: var(--color-white);
+}
+
+.preview-tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
+  flex-wrap: wrap;
+}
+
+.preview-tab-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-navy);
+  background-color: var(--color-canvas);
+  border: 1px solid var(--color-card-border);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.preview-tab-btn.active {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  border-color: var(--color-navy);
+}
+
+.preview-display {
+  max-width: 980px;
+  margin: 0 auto;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-card-border);
+  background-color: var(--color-canvas-alt);
+}
+
+.preview-display img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.preview-caption {
+  padding: var(--spacing-3) var(--spacing-5);
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border-subtle);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-body);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Seção Acesso CTA */
+.section-access-cta {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+  background: linear-gradient(135deg, #152e44 0%, #1a3c5a 100%);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.access-card {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.access-title {
+  color: var(--color-white);
+  font-size: clamp(1.85rem, 2.8vw, 2.4rem);
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--spacing-3);
+}
+
+.access-desc {
+  font-size: 0.95rem;
+  color: #cfdeec;
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-6);
+}
+
+.access-notice {
+  font-size: var(--font-size-xs);
+  color: #9cb8d4;
+  margin-top: var(--spacing-3);
+}
+
+/* --------------------------------------------------------------------------
+   5. Páginas Auxiliares
+   -------------------------------------------------------------------------- */
+.page-hero {
+  padding-top: var(--spacing-10);
+  padding-bottom: var(--spacing-10);
+  background-color: var(--color-canvas);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.page-hero-title {
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-2);
+}
+
+.page-hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-body);
+  max-width: 640px;
+  line-height: var(--line-height-normal);
+}
+
+.page-content-section {
+  padding-top: var(--spacing-10);
+  padding-bottom: var(--spacing-12);
+  background-color: var(--color-white);
+}
+
+/* Contato */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--spacing-10);
+}
+
+.contact-form {
+  background-color: var(--color-canvas);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-4);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-navy);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--color-navy);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--color-terracotta);
+  box-shadow: 0 0 0 3px var(--color-terracotta-light);
+}
+
+textarea.form-control {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* --------------------------------------------------------------------------
+   6. Responsividade das Páginas
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  .about-image-wrapper {
+    border-radius: 16px;
+  }
+
+  .about-image-wrapper img {
+    border-radius: 16px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .about-indicators {
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: none;
+  }
+
+  .pillar-card:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: 8px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .library-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
