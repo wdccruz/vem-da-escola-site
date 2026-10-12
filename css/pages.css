@@ -4,11 +4,11 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Página Inicial — Seção Hero
+   1. Página Inicial — Seção Hero (Composição Integrada)
    -------------------------------------------------------------------------- */
 .section-hero {
-  padding-top: var(--spacing-8);
-  padding-bottom: var(--spacing-6);
+  padding-top: var(--spacing-6);
+  padding-bottom: var(--spacing-4);
   background-color: var(--color-canvas);
   position: relative;
   overflow: hidden;
@@ -16,24 +16,30 @@
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 0.88fr 1.35fr;
+  grid-template-columns: 0.9fr 1.35fr;
   align-items: center;
-  gap: var(--spacing-8);
+  gap: var(--spacing-6);
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 2;
 }
 
 .hero-title {
-  font-size: clamp(2rem, 3.2vw, 2.9rem);
+  font-family: var(--font-family-display);
+  font-size: clamp(2.3rem, 3.6vw, 3.25rem);
   font-weight: var(--font-weight-extrabold);
   line-height: 1.15;
   color: var(--color-navy);
   margin-bottom: var(--spacing-3);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
+}
+
+.hero-line {
+  display: block;
 }
 
 .hero-title .highlight {
@@ -44,10 +50,11 @@
 
 .hero-subtitle {
   font-size: clamp(0.95rem, 1.25vw, 1.15rem);
-  color: var(--color-text-body);
-  line-height: var(--line-height-normal);
+  color: var(--color-navy);
+  line-height: 1.5;
   margin-bottom: var(--spacing-6);
-  max-width: 480px;
+  max-width: 460px;
+  font-weight: var(--font-weight-regular);
 }
 
 .hero-actions {
@@ -57,35 +64,29 @@
   flex-wrap: wrap;
 }
 
-/* Imagem do Hero: Ampla, com enquadramento completo dos personagens */
+/* Imagem do Hero: Composição integrada com a página, sem borda de cartão */
 .hero-media {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
 }
 
 .hero-image-wrapper {
   width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-card-border);
-  background-color: var(--color-white);
-  transition: transform var(--transition-normal);
-}
-
-.hero-image-wrapper:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  border: none;
+  background: transparent;
 }
 
 .hero-image-wrapper img {
   width: 100%;
   height: auto;
-  aspect-ratio: 1256 / 388;
-  object-fit: cover;
+  aspect-ratio: 1408 / 580;
+  object-fit: contain;
   display: block;
 }
 
@@ -99,23 +100,25 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. Página Inicial — Seção Quem Somos
+   3. Página Inicial — Seção Quem Somos (Composição Integrada)
    -------------------------------------------------------------------------- */
 .section-about {
   padding-top: var(--spacing-8);
-  padding-bottom: var(--spacing-12);
+  padding-bottom: var(--spacing-10);
   background-color: var(--color-canvas);
   border-top: 1px solid var(--color-border-subtle);
+  position: relative;
+  overflow: hidden;
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 0.75fr 1.55fr;
-  align-items: center;
-  gap: var(--spacing-8);
+  grid-template-columns: 0.85fr 1.25fr 1.15fr;
+  align-items: start;
+  gap: var(--spacing-6);
 }
 
-/* Fotografia Pura e Independente da Professora em Sala de Aula */
+/* Fotografia da Professora sangrando ou integrada à esquerda */
 .about-media {
   position: relative;
   width: 100%;
@@ -123,19 +126,20 @@
 
 .about-image-wrapper {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 0 24px 24px 0;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-card-border);
-  background-color: var(--color-white);
+  box-shadow: none;
+  border: none;
+  background: transparent;
 }
 
 .about-image-wrapper img {
   width: 100%;
   height: auto;
-  aspect-ratio: 636 / 288;
+  aspect-ratio: 680 / 316;
   object-fit: cover;
   display: block;
+  border-radius: 0 24px 24px 0;
 }
 
 .about-content {
@@ -143,8 +147,19 @@
   flex-direction: column;
 }
 
+.section-kicker {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: 0.08em;
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-2);
+  text-transform: uppercase;
+}
+
 .about-title {
-  font-size: clamp(1.75rem, 2.6vw, 2.3rem);
+  font-family: var(--font-family-display);
+  font-size: clamp(1.65rem, 2.3vw, 2.15rem);
   font-weight: var(--font-weight-extrabold);
   line-height: 1.2;
   color: var(--color-navy);
@@ -154,74 +169,128 @@
 
 .about-title .highlight {
   color: var(--color-terracotta);
+  position: relative;
+  display: inline-block;
+}
+
+.about-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-terracotta);
+  border-radius: 2px;
 }
 
 .about-text {
-  font-size: 0.95rem;
+  font-size: 0.935rem;
   color: var(--color-text-body);
   line-height: 1.6;
-  margin-bottom: var(--spacing-6);
+  margin-bottom: var(--spacing-5);
 }
 
-/* Os 3 Pilares de Valor */
-.about-pillars {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: var(--spacing-6);
+.about-actions {
+  margin-bottom: var(--spacing-4);
+}
+
+/* Coluna Direita: Indicadores e Citação Integrada */
+.about-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.about-indicators {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: 14px;
+  margin-bottom: 8px;
 }
 
 .pillar-card {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-card-border);
-  border-radius: var(--radius-md);
-  padding: 12px 14px;
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  padding: 4px 6px;
   text-align: left;
+}
+
+.pillar-card:not(:last-child) {
+  border-right: 1px solid var(--color-border-subtle);
+}
+
+.pillar-icon {
+  color: var(--color-navy);
+  margin-bottom: 6px;
+}
+
+.pillar-icon svg {
+  width: 22px;
+  height: 22px;
 }
 
 .pillar-number {
   font-family: var(--font-family-display);
-  font-size: 1.25rem;
+  font-size: 0.95rem;
   font-weight: var(--font-weight-extrabold);
-  color: var(--color-terracotta);
-  line-height: 1;
-  margin-bottom: 3px;
-}
-
-.pillar-title {
-  font-size: 0.825rem;
-  font-weight: var(--font-weight-bold);
   color: var(--color-navy);
+  line-height: 1.25;
   margin-bottom: 2px;
 }
 
 .pillar-desc {
-  font-size: 0.725rem;
+  font-size: 0.72rem;
   color: var(--color-text-muted);
   line-height: 1.35;
 }
 
 .pillar-footnote {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--color-text-muted);
-  margin-top: -12px;
   margin-bottom: var(--spacing-4);
 }
 
-/* Citação Oficial da Prancha */
+/* Citação Integrada no Canto Inferior Direito com Aspas Laranja */
 .about-quote-box {
-  background-color: var(--color-blue-tint);
-  border-left: 3px solid var(--color-terracotta);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  position: relative;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.quote-mark {
+  font-family: Georgia, serif;
+  font-size: 2.8rem;
+  line-height: 0.8;
+  color: var(--color-terracotta);
+  display: block;
+  margin-bottom: 4px;
 }
 
 .about-quote-text {
-  font-size: 0.875rem;
+  font-size: 0.885rem;
   font-weight: var(--font-weight-semibold);
   font-style: italic;
   color: var(--color-navy);
   line-height: 1.45;
+}
+
+.quote-underline {
+  display: block;
+  width: 48px;
+  height: 3px;
+  background-color: var(--color-terracotta);
+  border-radius: 2px;
+  margin-top: 8px;
 }
 
 /* --------------------------------------------------------------------------
@@ -598,6 +667,18 @@ textarea.form-control {
     gap: var(--spacing-6);
   }
 
+  .about-image-wrapper {
+    border-radius: 16px;
+  }
+
+  .about-image-wrapper img {
+    border-radius: 16px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -613,8 +694,21 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
-  .about-pillars {
+  .cards-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .about-indicators {
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: none;
+  }
+
+  .pillar-card:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: 8px;
   }
 
   .features-grid {
@@ -629,5 +723,19 @@ textarea.form-control {
   .library-hero-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header .container {
+    height: 72px;
+  }
+
+  .brand-logo {
+    height: 48px;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
   }
 }

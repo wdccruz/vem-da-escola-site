@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
 import os
 
-board_path = r'C:\Users\wdccr\.gemini\antigravity\brain\473f193e-4d1f-4134-9424-d22b19dd230e\.user_uploaded\media_1791812142708_f29726ea.jpg'
+board_path = r'C:\Users\wdccr\.gemini\antigravity\brain\473f193e-4d1f-4134-9424-d22b19dd230e\.user_uploaded\media_1791817707965_ca02f0ac.jpg'
 evidencias_dir = r'C:\Users\wdccr\Documents\ChatGPT\fabby\vem-da-escola-site\docs\evidencias'
 
 def create_all_comparisons():
