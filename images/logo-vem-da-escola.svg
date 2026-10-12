@@ -1,11 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" width="220" height="40" fill="none">
-  <!-- Brand text: vem da escola -->
-  <text x="4" y="27" font-family="'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#152e44" letter-spacing="-0.5">
-    vem da <tspan fill="#152e44">escola</tspan>
-  </text>
-  <!-- Decorative hand-drawn orange smile/swoosh under "escola" -->
-  <path d="M128 32 C 145 35.5, 180 35.5, 202 30" stroke="#dd5024" stroke-width="3" stroke-linecap="round" fill="none" />
-  <!-- Little playful sparkle / sun rays above "escola" -->
-  <circle cx="206" cy="12" r="2.5" fill="#dd5024" />
-  <path d="M206 5 L206 8 M213 12 L210 12 M211 7 L209 9" stroke="#dd5024" stroke-width="1.8" stroke-linecap="round" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 85" width="200" height="85" fill="none">
+  <!-- Grupo do Logotipo Oficial Vem da Escola em Duas Linhas -->
+  <g id="logo-vem-da-escola">
+    <!-- Linha 1: 'vem da' -->
+    <text x="18" y="38" font-family="'Plus Jakarta Sans', 'Outfit', sans-serif" font-size="28" font-weight="800" fill="#152e44" letter-spacing="-0.03em">
+      vem da
+    </text>
+
+    <!-- Linha 2: 'escola' com destaque visual orgânico -->
+    <text x="16" y="70" font-family="'Plus Jakarta Sans', 'Outfit', sans-serif" font-size="34" font-weight="800" fill="#152e44" letter-spacing="-0.03em">
+      escola
+    </text>
+
+    <!-- Traço orgânico em terracota / pincelada curvada sob 'escola' -->
+    <path d="M72 79 C 95 83, 138 83, 168 76" stroke="#dd5024" stroke-width="4.5" stroke-linecap="round" fill="none" />
+    <path d="M85 81 C 112 84.5, 145 83.5, 162 78" stroke="#dd5024" stroke-width="2" stroke-linecap="round" fill="none" />
+
+    <!-- Elementos decorativos no topo direito: centelhas / raios solares em terracota -->
+    <!-- Centelha principal -->
+    <circle cx="152" cy="18" r="3.5" fill="#dd5024" />
+    <path d="M152 7 L152 12 M152 24 L152 29 M141 18 L146 18 M158 18 L163 18" stroke="#dd5024" stroke-width="2.2" stroke-linecap="round" />
+    <path d="M144 10 L148 14 M156 22 L160 26 M144 26 L148 22 M156 14 L160 10" stroke="#dd5024" stroke-width="1.6" stroke-linecap="round" />
+
+    <!-- Centelha secundária menor -->
+    <circle cx="166" cy="28" r="2" fill="#dd5024" />
+    <path d="M166 22 L166 25 M166 31 L166 34 M160 28 L163 28 M169 28 L172 28" stroke="#dd5024" stroke-width="1.4" stroke-linecap="round" />
+  </g>
 </svg>

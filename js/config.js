@@ -2,38 +2,42 @@
  * ============================================================================
  * VEM DA ESCOLA — CONFIGURAÇÃO CENTRALIZADA
  * ============================================================================
- * Centraliza URLs externas, parâmetros de contato e configurações do sistema.
- * Permite alterar o destino da aplicação de bibliotecas em um único ponto.
+ * Centraliza parâmetros institucionais, rotas e dependências externas.
+ * Evita hardcoding de domínios não confirmados ou redirecionamentos indevidos.
  */
 
 const VDE_CONFIG = {
-  // Nome da Plataforma
   siteName: "Vem da Escola",
   tagline: "Conhecimento que nasce da experiência.",
-  
-  // URL da Aplicação de Gestão de Bibliotecas Escolares
-  // Por padrão, aponta para a instância local/documentada do sistema de bibliotecas.
-  // Em produção, esta URL deve ser atualizada para o domínio público da VPS.
-  libraryAppUrl: "http://localhost:8000/login",
-  
-  // Caminho da página interna de apresentação institucional da Biblioteca
+
+  // URL pública da aplicação de Gestão de Bibliotecas Escolares
+  // ATENÇÃO DE PUBLICAÇÃO: Deve ser preenchida com o domínio público definitivo
+  // após o deploy da aplicação de bibliotecas.
+  // Enquanto estiver vazia (""), o site apresenta aviso institucional de
+  // homologação ativa e canal de implantação, impedindo redirecionamento para localhost.
+  libraryAppUrl: "",
+
+  // Rota interna da apresentação da ferramenta antes de qualquer login
   libraryPresentationUrl: "/ferramentas/biblioteca.html",
 
-  // Contato Institucional
+  // Canais Institucionais Oficiais (sujeitos à confirmação factual antes do go-live)
   contact: {
-    email: "contato@vemvamdaescola.com.br", // Configurável
-    instagram: "@vemdaescola",
-    atendimento: "Segunda a sexta-feira, em horário escolar"
+    // E-mail oficial: pendente de configuração definitiva de caixa postal pela equipe
+    email: null,
+    // Endpoint de envio de formulário em hospedagem estática (ex: Formspree, Cloudflare Worker)
+    // Pendente de seleção do provedor institucional
+    formEndpoint: null,
+    // Informação de atendimento
+    atendimento: "Atendimento institucional para escolas e educadores sob demanda"
   },
 
-  // Repositórios Oficiais
+  // Repositórios Oficiais do Projeto
   repositories: {
     site: "https://github.com/wdccruz/vem-da-escola-site",
     biblioteca: "https://github.com/wdccruz/vem-da-escola"
   }
 };
 
-// Exporta globalmente para uso no browser e módulos
 if (typeof window !== 'undefined') {
   window.VDE_CONFIG = VDE_CONFIG;
 }

@@ -1,14 +1,14 @@
 /* ==========================================================================
-   VEM DA ESCOLA — PÁGINAS CSS
-   Estilos específicos da Página Inicial, Biblioteca e Seções Auxiliares
+   VEM DA ESCOLA — PÁGINAS CSS (v1 Corrigido)
+   Ajuste fino de proporções conforme a prancha aprovada
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. Página Inicial — Seção Hero
    -------------------------------------------------------------------------- */
 .section-hero {
-  padding-top: var(--spacing-12);
-  padding-bottom: var(--spacing-10);
+  padding-top: var(--spacing-8);
+  padding-bottom: var(--spacing-6);
   background-color: var(--color-canvas);
   position: relative;
   overflow: hidden;
@@ -16,9 +16,9 @@
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: 0.88fr 1.35fr;
   align-items: center;
-  gap: var(--spacing-10);
+  gap: var(--spacing-8);
 }
 
 .hero-content {
@@ -28,11 +28,11 @@
 }
 
 .hero-title {
-  font-size: clamp(2.2rem, 3.8vw, 3.25rem);
+  font-size: clamp(2rem, 3.2vw, 2.9rem);
   font-weight: var(--font-weight-extrabold);
   line-height: 1.15;
   color: var(--color-navy);
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing-3);
   letter-spacing: -0.025em;
 }
 
@@ -43,33 +43,34 @@
 }
 
 .hero-subtitle {
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-size: clamp(0.95rem, 1.25vw, 1.15rem);
   color: var(--color-text-body);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--spacing-8);
-  max-width: 520px;
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-6);
+  max-width: 480px;
 }
 
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: var(--spacing-4);
+  gap: var(--spacing-3);
   flex-wrap: wrap;
 }
 
-/* Imagem do Hero */
+/* Imagem do Hero: Ampla, com enquadramento completo dos personagens */
 .hero-media {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .hero-image-wrapper {
   width: 100%;
-  border-radius: var(--radius-2xl);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--color-card-border);
   background-color: var(--color-white);
   transition: transform var(--transition-normal);
@@ -83,6 +84,7 @@
 .hero-image-wrapper img {
   width: 100%;
   height: auto;
+  aspect-ratio: 1256 / 388;
   object-fit: cover;
   display: block;
 }
@@ -91,8 +93,8 @@
    2. Página Inicial — Seção dos Cartões
    -------------------------------------------------------------------------- */
 .section-cards {
-  padding-top: var(--spacing-6);
-  padding-bottom: var(--spacing-12);
+  padding-top: var(--spacing-2);
+  padding-bottom: var(--spacing-8);
   background-color: var(--color-canvas);
 }
 
@@ -100,29 +102,30 @@
    3. Página Inicial — Seção Quem Somos
    -------------------------------------------------------------------------- */
 .section-about {
-  padding-top: var(--spacing-12);
-  padding-bottom: var(--spacing-16);
+  padding-top: var(--spacing-8);
+  padding-bottom: var(--spacing-12);
   background-color: var(--color-canvas);
   border-top: 1px solid var(--color-border-subtle);
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 0.75fr 1.55fr;
   align-items: center;
-  gap: var(--spacing-12);
+  gap: var(--spacing-8);
 }
 
-/* Foto da Professora */
+/* Fotografia Pura e Independente da Professora em Sala de Aula */
 .about-media {
   position: relative;
+  width: 100%;
 }
 
 .about-image-wrapper {
   width: 100%;
-  border-radius: var(--radius-2xl);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--color-card-border);
   background-color: var(--color-white);
 }
@@ -130,22 +133,22 @@
 .about-image-wrapper img {
   width: 100%;
   height: auto;
+  aspect-ratio: 636 / 288;
   object-fit: cover;
   display: block;
 }
 
-/* Conteúdo Quem Somos */
 .about-content {
   display: flex;
   flex-direction: column;
 }
 
 .about-title {
-  font-size: clamp(1.85rem, 3vw, 2.6rem);
+  font-size: clamp(1.75rem, 2.6vw, 2.3rem);
   font-weight: var(--font-weight-extrabold);
   line-height: 1.2;
   color: var(--color-navy);
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing-3);
   letter-spacing: -0.02em;
 }
 
@@ -154,72 +157,79 @@
 }
 
 .about-text {
-  font-size: var(--font-size-base);
+  font-size: 0.95rem;
   color: var(--color-text-body);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--spacing-8);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-6);
 }
 
 /* Os 3 Pilares de Valor */
 .about-pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-4);
-  margin-bottom: var(--spacing-8);
+  gap: 12px;
+  margin-bottom: var(--spacing-6);
 }
 
 .pillar-card {
   background-color: var(--color-white);
   border: 1px solid var(--color-card-border);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-4);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
   text-align: left;
 }
 
 .pillar-number {
   font-family: var(--font-family-display);
-  font-size: var(--font-size-xl);
+  font-size: 1.25rem;
   font-weight: var(--font-weight-extrabold);
   color: var(--color-terracotta);
   line-height: 1;
-  margin-bottom: var(--spacing-1);
+  margin-bottom: 3px;
 }
 
 .pillar-title {
-  font-size: var(--font-size-sm);
+  font-size: 0.825rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-navy);
-  margin-bottom: var(--spacing-1);
+  margin-bottom: 2px;
 }
 
 .pillar-desc {
-  font-size: var(--font-size-xs);
+  font-size: 0.725rem;
   color: var(--color-text-muted);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
-/* Citação / Destaque inferior direito */
+.pillar-footnote {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin-top: -12px;
+  margin-bottom: var(--spacing-4);
+}
+
+/* Citação Oficial da Prancha */
 .about-quote-box {
   background-color: var(--color-blue-tint);
   border-left: 3px solid var(--color-terracotta);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  padding: var(--spacing-4) var(--spacing-5);
+  padding: 12px 16px;
 }
 
 .about-quote-text {
-  font-size: var(--font-size-sm);
+  font-size: 0.875rem;
   font-weight: var(--font-weight-semibold);
   font-style: italic;
   color: var(--color-navy);
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 /* --------------------------------------------------------------------------
    4. Página de Apresentação da Biblioteca Escolar (/ferramentas/biblioteca.html)
    -------------------------------------------------------------------------- */
 .library-hero {
-  padding-top: var(--spacing-12);
-  padding-bottom: var(--spacing-12);
+  padding-top: var(--spacing-10);
+  padding-bottom: var(--spacing-10);
   background: linear-gradient(180deg, #faf8f5 0%, #f4eee6 100%);
   border-bottom: 1px solid var(--color-border-subtle);
   text-align: center;
@@ -232,27 +242,27 @@
   background-color: var(--color-terracotta-light);
   color: var(--color-terracotta);
   border: 1px solid var(--color-terracotta-subtle);
-  padding: 6px 16px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: var(--spacing-4);
-}
-
-.library-hero-title {
-  font-size: clamp(2.2rem, 4vw, 3.25rem);
-  font-weight: var(--font-weight-extrabold);
-  color: var(--color-navy);
   margin-bottom: var(--spacing-3);
 }
 
+.library-hero-title {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-2);
+}
+
 .library-hero-subtitle {
-  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
   color: var(--color-text-body);
-  max-width: 720px;
-  margin: 0 auto var(--spacing-8);
+  max-width: 680px;
+  margin: 0 auto var(--spacing-6);
   line-height: var(--line-height-normal);
 }
 
@@ -260,21 +270,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-4);
+  gap: var(--spacing-3);
   flex-wrap: wrap;
 }
 
-/* Seção de Funcionalidades Verificadas */
+/* Seção de Funcionalidades */
 .section-features {
-  padding-top: var(--spacing-16);
-  padding-bottom: var(--spacing-16);
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
   background-color: var(--color-white);
 }
 
 .section-heading-center {
   text-align: center;
   max-width: 680px;
-  margin: 0 auto var(--spacing-12);
+  margin: 0 auto var(--spacing-10);
 }
 
 .section-kicker {
@@ -287,14 +297,14 @@
 }
 
 .section-title {
-  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
   font-weight: var(--font-weight-extrabold);
   color: var(--color-navy);
-  margin-bottom: var(--spacing-3);
+  margin-bottom: var(--spacing-2);
 }
 
 .section-subtitle {
-  font-size: var(--font-size-base);
+  font-size: 0.95rem;
   color: var(--color-text-muted);
   line-height: var(--line-height-normal);
 }
@@ -302,58 +312,58 @@
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-6);
+  gap: var(--spacing-5);
 }
 
 .feature-card {
   background-color: var(--color-canvas);
   border: 1px solid var(--color-card-border);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-5);
   transition: all var(--transition-normal);
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-md);
   background-color: var(--color-white);
   border-color: var(--color-blue-border);
 }
 
 .feature-icon-box {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-lg);
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
   background-color: var(--color-blue-tint);
   color: var(--color-blue-soft);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing-3);
 }
 
 .feature-icon-box svg {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 }
 
 .feature-card-title {
-  font-size: var(--font-size-md);
+  font-size: 0.95rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-navy);
   margin-bottom: var(--spacing-2);
 }
 
 .feature-card-desc {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   color: var(--color-text-body);
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
-/* Seção Como Funciona */
+/* Como Funciona */
 .section-how-it-works {
-  padding-top: var(--spacing-16);
-  padding-bottom: var(--spacing-16);
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
   background-color: var(--color-canvas);
   border-top: 1px solid var(--color-border-subtle);
   border-bottom: 1px solid var(--color-border-subtle);
@@ -362,51 +372,49 @@
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-8);
-  position: relative;
+  gap: var(--spacing-6);
 }
 
 .step-card {
   background-color: var(--color-white);
   border: 1px solid var(--color-card-border);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-8) var(--spacing-6);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6) var(--spacing-5);
   text-align: center;
-  position: relative;
 }
 
 .step-number {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-full);
   background-color: var(--color-navy);
   color: var(--color-white);
   font-family: var(--font-family-display);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-extrabold);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto var(--spacing-4);
+  margin: 0 auto var(--spacing-3);
 }
 
 .step-title {
-  font-size: var(--font-size-md);
+  font-size: 0.95rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-navy);
-  margin-bottom: var(--spacing-2);
+  margin-bottom: var(--spacing-1);
 }
 
 .step-desc {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   color: var(--color-text-body);
   line-height: 1.5;
 }
 
-/* Seção Telas do Sistema / Galeria */
+/* Telas do Sistema */
 .section-system-preview {
-  padding-top: var(--spacing-16);
-  padding-bottom: var(--spacing-16);
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
   background-color: var(--color-white);
 }
 
@@ -414,24 +422,20 @@
   display: flex;
   justify-content: center;
   gap: var(--spacing-2);
-  margin-bottom: var(--spacing-8);
+  margin-bottom: var(--spacing-6);
   flex-wrap: wrap;
 }
 
 .preview-tab-btn {
-  padding: 8px 18px;
+  padding: 6px 14px;
   border-radius: var(--radius-full);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
   color: var(--color-navy);
   background-color: var(--color-canvas);
   border: 1px solid var(--color-card-border);
   cursor: pointer;
   transition: all var(--transition-fast);
-}
-
-.preview-tab-btn:hover {
-  background-color: var(--color-canvas-alt);
 }
 
 .preview-tab-btn.active {
@@ -441,7 +445,7 @@
 }
 
 .preview-display {
-  max-width: 1040px;
+  max-width: 980px;
   margin: 0 auto;
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -457,109 +461,109 @@
 }
 
 .preview-caption {
-  padding: var(--spacing-4) var(--spacing-6);
+  padding: var(--spacing-3) var(--spacing-5);
   background-color: var(--color-white);
   border-top: 1px solid var(--color-border-subtle);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   color: var(--color-text-body);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Seção de Acesso à Biblioteca */
+/* Seção Acesso CTA */
 .section-access-cta {
-  padding-top: var(--spacing-16);
-  padding-bottom: var(--spacing-16);
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
   background: linear-gradient(135deg, #152e44 0%, #1a3c5a 100%);
   color: var(--color-white);
   text-align: center;
 }
 
 .access-card {
-  max-width: 720px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
 .access-title {
   color: var(--color-white);
-  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-size: clamp(1.85rem, 2.8vw, 2.4rem);
   font-weight: var(--font-weight-extrabold);
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing-3);
 }
 
 .access-desc {
-  font-size: var(--font-size-md);
+  font-size: 0.95rem;
   color: #cfdeec;
   line-height: var(--line-height-normal);
-  margin-bottom: var(--spacing-8);
+  margin-bottom: var(--spacing-6);
 }
 
 .access-notice {
   font-size: var(--font-size-xs);
   color: #9cb8d4;
-  margin-top: var(--spacing-4);
+  margin-top: var(--spacing-3);
 }
 
 /* --------------------------------------------------------------------------
-   5. Páginas Auxiliares (Educadores, Famílias, Conteúdos, Sobre, Contato)
+   5. Páginas Auxiliares
    -------------------------------------------------------------------------- */
 .page-hero {
-  padding-top: var(--spacing-12);
-  padding-bottom: var(--spacing-12);
+  padding-top: var(--spacing-10);
+  padding-bottom: var(--spacing-10);
   background-color: var(--color-canvas);
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .page-hero-title {
-  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
   font-weight: var(--font-weight-extrabold);
   color: var(--color-navy);
-  margin-bottom: var(--spacing-3);
+  margin-bottom: var(--spacing-2);
 }
 
 .page-hero-subtitle {
-  font-size: var(--font-size-lg);
+  font-size: 1.05rem;
   color: var(--color-text-body);
-  max-width: 680px;
+  max-width: 640px;
   line-height: var(--line-height-normal);
 }
 
 .page-content-section {
-  padding-top: var(--spacing-12);
-  padding-bottom: var(--spacing-16);
+  padding-top: var(--spacing-10);
+  padding-bottom: var(--spacing-12);
   background-color: var(--color-white);
 }
 
-/* Formulário de Contato */
+/* Contato */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-12);
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--spacing-10);
 }
 
 .contact-form {
   background-color: var(--color-canvas);
   border: 1px solid var(--color-card-border);
   border-radius: var(--radius-xl);
-  padding: var(--spacing-8);
+  padding: var(--spacing-6);
 }
 
 .form-group {
-  margin-bottom: var(--spacing-5);
+  margin-bottom: var(--spacing-4);
 }
 
 .form-label {
   display: block;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
   color: var(--color-navy);
-  margin-bottom: var(--spacing-2);
+  margin-bottom: 6px;
 }
 
 .form-control {
   width: 100%;
-  padding: 12px 16px;
+  padding: 10px 14px;
   font-family: inherit;
   font-size: var(--font-size-sm);
   color: var(--color-navy);
@@ -576,7 +580,7 @@
 }
 
 textarea.form-control {
-  min-height: 120px;
+  min-height: 110px;
   resize: vertical;
 }
 
@@ -586,12 +590,12 @@ textarea.form-control {
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-8);
+    gap: var(--spacing-6);
   }
 
   .about-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-8);
+    gap: var(--spacing-6);
   }
 
   .features-grid {
@@ -600,7 +604,7 @@ textarea.form-control {
 
   .steps-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-6);
+    gap: var(--spacing-4);
   }
 
   .contact-grid {
