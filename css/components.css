@@ -31,11 +31,10 @@
 }
 
 .brand-logo {
-  height: 64px;
+  height: 74px;
   width: auto;
-  max-width: 240px;
+  max-width: none;
   display: block;
-  object-fit: contain;
 }
 
 /* Navegação Principal Desktop */
@@ -302,10 +301,6 @@
   font-size: 0.725rem;
   color: var(--color-text-muted);
   line-height: 1.35;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .info-card-arrow {
@@ -491,7 +486,7 @@
 }
 
 .footer-brand .brand-logo-footer {
-  height: 44px;
+  height: 68px;
   width: auto;
   margin-bottom: var(--spacing-3);
   filter: brightness(0) invert(1);
@@ -576,16 +571,16 @@
 
 @media (max-width: 768px) {
   .site-header .container {
-    height: 68px;
+    height: 76px;
   }
 
   .brand-logo {
-    height: 40px;
+    height: 62px;
   }
 
   .nav-menu {
     position: fixed;
-    top: 68px;
+    top: 76px;
     left: 0;
     width: 100%;
     background-color: var(--color-white);
