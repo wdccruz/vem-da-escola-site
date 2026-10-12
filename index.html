@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vem da Escola — Conhecimento que nasce da experiência</title>
+  <meta name="description" content="Soluções educacionais criadas a partir da realidade de quem vive a escola. Plataforma institucional fundada por Fabby Assis com ferramentas para a comunidade escolar.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  
+  <!-- CSS Modular -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <!-- Link de Acessibilidade -->
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- ======================================================================
+       CABEÇALHO & MENU SUPERIOR
+       ====================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="index.html" class="brand-link" aria-label="Vem da Escola — Página Inicial">
+        <img src="images/logo-vem-da-escola.svg" alt="Vem da Escola" class="brand-logo" width="220" height="40">
+      </a>
+
+      <!-- Menu Principal Desktop -->
+      <nav class="nav-menu" role="navigation" aria-label="Navegação Principal">
+        <a href="index.html" class="nav-link active" aria-current="page">Início</a>
+        <a href="educadores.html" class="nav-link">Para Educadores</a>
+        <a href="familias.html" class="nav-link">Para Famílias</a>
+        <a href="conteudos.html" class="nav-link">Conteúdos</a>
+        <a href="sobre.html" class="nav-link">Sobre</a>
+        <a href="contato.html" class="nav-link">Contato</a>
+      </nav>
+
+      <!-- Ações: Pesquisa e Acesso à Biblioteca -->
+      <div class="nav-actions">
+        <button type="button" class="btn-search-trigger" data-action="open-search" aria-label="Pesquisar no site (Atalho: Ctrl+K)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <a href="ferramentas/biblioteca.html" class="btn btn-nav-access" title="Apresentação do Sistema de Bibliotecas">
+          <span>Acessar</span>
+          <span class="btn-icon-right" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+
+        <!-- Botão Mobile -->
+        <button type="button" class="mobile-toggle" aria-expanded="false" aria-label="Abrir menu de navegação">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <!-- ======================================================================
+         SEÇÃO HERO — ÁREA PRINCIPAL DA PRANCHA APROVADA
+         ====================================================================== -->
+    <section class="section-hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Coluna Esquerda: Textos e Botões -->
+          <div class="hero-content">
+            <h1 id="hero-title" class="hero-title">
+              Conhecimento que nasce da <span class="highlight">experiência.</span>
+            </h1>
+            <p class="hero-subtitle">
+              Soluções educacionais criadas a partir da realidade de quem vive a escola.
+            </p>
+            <div class="hero-actions">
+              <a href="ferramentas/biblioteca.html" class="btn btn-primary btn-lg">
+                <span>Conheça nossas soluções</span>
+                <span class="btn-icon-right" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </span>
+              </a>
+              <a href="#sobre" class="btn btn-secondary btn-lg">
+                <span>Nossa história</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Coluna Direita: Fotografia Principal Aprovada -->
+          <div class="hero-media">
+            <div class="hero-image-wrapper">
+              <img src="images/hero-educacao.jpg" alt="Educadora com tablet, pai e crianças diante do quadro escolar com a frase: Da experiência do quadro verde à inovação digital" width="1018" height="398" loading="eager" fetchpriority="high">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO DOS 4 CARTÕES DA COMPOSIÇÃO
+         ====================================================================== -->
+    <section class="section-cards" aria-label="Pilares de Soluções">
+      <div class="container">
+        <div class="cards-grid">
+          <!-- Cartão 1: Para Educadores -->
+          <a href="educadores.html" class="info-card" id="card-educadores">
+            <div class="info-card-header">
+              <div class="info-card-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+              </div>
+              <div class="info-card-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h2 class="info-card-title">Para Educadores</h2>
+              <p class="info-card-desc">Ferramentas, conteúdos e formações para facilitar o seu dia a dia.</p>
+            </div>
+          </a>
+
+          <!-- Cartão 2: Para Famílias -->
+          <a href="familias.html" class="info-card" id="card-familias">
+            <div class="info-card-header">
+              <div class="info-card-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="info-card-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h2 class="info-card-title">Para Famílias</h2>
+              <p class="info-card-desc">Orientações, conteúdos e apoio para acompanhar a aprendizagem dos seus filhos.</p>
+            </div>
+          </a>
+
+          <!-- Cartão 3: Conteúdos -->
+          <a href="conteudos.html" class="info-card" id="card-conteudos">
+            <div class="info-card-header">
+              <div class="info-card-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </div>
+              <div class="info-card-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h2 class="info-card-title">Conteúdos</h2>
+              <p class="info-card-desc">Artigos, guias e materiais sobre educação, escola, família e desenvolvimento.</p>
+            </div>
+          </a>
+
+          <!-- Cartão 4: Ferramentas e Soluções (Entrada Principal para Apresentação da Biblioteca) -->
+          <a href="ferramentas/biblioteca.html" class="info-card card-highlight" id="card-ferramentas">
+            <div class="info-card-header">
+              <div class="info-card-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <div class="info-card-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h2 class="info-card-title">Ferramentas e Soluções</h2>
+              <p class="info-card-desc">Recursos práticos e intuitivos para uma escola mais organizada, inclusiva e eficiente.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO QUEM SOMOS
+         ====================================================================== -->
+    <section class="section-about" id="sobre" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-grid">
+          <!-- Coluna Esquerda: Fotografia da Professora em Sala de Aula com Lousa Digital -->
+          <div class="about-media">
+            <div class="about-image-wrapper">
+              <img src="images/quem-somos-professora.jpg" alt="Professora em sala de aula diante da lousa digital realista interagindo com alunos" width="890" height="344" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Coluna Direita: Texto Aprovado, Pilares e Citação -->
+          <div class="about-content">
+            <h2 id="about-title" class="about-title">
+              Da experiência real para uma educação <span class="highlight">mais viva.</span>
+            </h2>
+            <p class="about-text">
+              O Vem da Escola nasce da experiência da Fabby Assis, educadora com décadas de vivência na escola. Transformamos conhecimento em ferramentas que apoiam professores, gestores e instituições a tornarem a rotina da escola num cotidiano facilitado, organizado e prático.
+            </p>
+
+            <!-- Os 3 Pilares de Valor da Prancha Aprovada -->
+            <div class="about-pillars">
+              <div class="pillar-card">
+                <div class="pillar-number">+30 anos</div>
+                <div class="pillar-title">Vivência Prática</div>
+                <p class="pillar-desc">Trajetória real vivenciada na rotina diária das escolas.</p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-number">Soluções</div>
+                <div class="pillar-title">Práticas &amp; Úteis</div>
+                <p class="pillar-desc">Ferramentas criadas para resolver problemas concretos.</p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-number">Diálogo</div>
+                <div class="pillar-title">Escola &amp; Família</div>
+                <p class="pillar-desc">Aproximação real entre educadores, gestores e pais.</p>
+              </div>
+            </div>
+
+            <!-- Citação Oficial da Prancha -->
+            <div class="about-quote-box">
+              <p class="about-quote-text">
+                "Quando o conhecimento circula, a educação se fortalece."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       RODAPÉ INSTITUCIONAL
+       ====================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-vem-da-escola.svg" alt="Vem da Escola" class="brand-logo-footer" width="220" height="40">
+          <p class="footer-desc">
+            Transformando décadas de vivência na escola em soluções digitais acessíveis, funcionais e organizadas para toda a comunidade educacional.
+          </p>
+          <div class="footer-quote">
+            "Quando o conhecimento circula, a educação se fortalece."
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Navegação</div>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Início</a></li>
+            <li><a href="educadores.html" class="footer-link">Para Educadores</a></li>
+            <li><a href="familias.html" class="footer-link">Para Famílias</a></li>
+            <li><a href="conteudos.html" class="footer-link">Conteúdos</a></li>
+            <li><a href="sobre.html" class="footer-link">Sobre a Iniciativa</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-title">Ferramentas</div>
+          <ul class="footer-links">
+            <li><a href="ferramentas/biblioteca.html" class="footer-link">Biblioteca Escolar</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Gestão de Acervo</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Circulação &amp; Empréstimos</a></li>
+            <li><a href="ferramentas/biblioteca.html#funcionalidades" class="footer-link">Relatórios Gerenciais</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-title">Contato</div>
+          <div class="footer-contact-info">
+            <p>Atendimento a escolas e educadores:</p>
+            <p><a href="contato.html" class="footer-link" style="color: var(--color-terracotta); font-weight: 600;">Fale Conosco →</a></p>
+            <p style="font-size: 0.8rem; margin-top: 8px;">Canais oficiais de diálogo dedicados a professores, gestores e famílias.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Vem da Escola — Fundado por Fabby Assis. Todos os direitos reservados.</p>
+        <p>Desenvolvido com foco em acessibilidade e simplicidade operacional.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       MODAL DE PESQUISA INSTITUCIONAL (NATIVO <dialog>)
+       ====================================================================== -->
+  <dialog id="search-dialog" class="search-dialog" aria-labelledby="search-dialog-title">
+    <div class="search-dialog-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search-input" class="search-input" placeholder="Pesquisar por ferramentas, temas, conteúdos..." aria-label="Termo de pesquisa">
+      <button type="button" class="btn-close-search" data-action="close-search" aria-label="Fechar busca (Esc)">ESC</button>
+    </div>
+    <div class="search-dialog-body" id="search-results">
+      <!-- Resultados renderizados via JavaScript -->
+    </div>
+    <div class="search-dialog-footer">
+      <span>Navegue pelos resultados e clique para acessar</span>
+      <span>Atalho: <strong>Ctrl + K</strong></span>
+    </div>
+  </dialog>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

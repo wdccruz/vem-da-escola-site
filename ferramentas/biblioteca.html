@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Escolar — Vem da Escola</title>
+  <meta name="description" content="Ferramenta gratuita para organizar e facilitar a gestão da biblioteca da sua escola. Controle acervo, exemplares físicos, empréstimos e relatórios com simplicidade.">
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+
+  <!-- CSS Modular -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- ======================================================================
+       CABEÇALHO INSTITUCIONAL
+       ====================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="../index.html" class="brand-link" aria-label="Vem da Escola — Página Inicial">
+        <img src="../images/logo-vem-da-escola.svg" alt="Vem da Escola" class="brand-logo" width="220" height="40">
+      </a>
+
+      <nav class="nav-menu" role="navigation" aria-label="Navegação Principal">
+        <a href="../index.html" class="nav-link">Início</a>
+        <a href="../educadores.html" class="nav-link">Para Educadores</a>
+        <a href="../familias.html" class="nav-link">Para Famílias</a>
+        <a href="../conteudos.html" class="nav-link">Conteúdos</a>
+        <a href="../sobre.html" class="nav-link">Sobre</a>
+        <a href="../contato.html" class="nav-link">Contato</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-search-trigger" data-action="open-search" aria-label="Pesquisar no site">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <a href="#acesso-sistema" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.825rem;">
+          <span>Acessar</span>
+          <span class="btn-icon-right" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+
+        <button type="button" class="mobile-toggle" aria-expanded="false" aria-label="Abrir menu de navegação">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <!-- ======================================================================
+         SEÇÃO 1 — APRESENTAÇÃO INSTITUCIONAL DA FERRAMENTA
+         ====================================================================== -->
+    <section class="library-hero" aria-labelledby="lib-title">
+      <div class="container">
+        <div class="library-hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span>Primeiro Produto Tecnológico • Gratuito para Escolas</span>
+        </div>
+        <h1 id="lib-title" class="library-hero-title">Biblioteca Escolar</h1>
+        <p class="library-hero-subtitle">
+          Uma ferramenta gratuita para organizar e facilitar a gestão da biblioteca da sua escola.
+        </p>
+        <div class="library-hero-actions">
+          <a href="#acesso-sistema" class="btn btn-primary btn-lg">
+            <span>Acessar o Sistema</span>
+            <span class="btn-icon-right" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+          <a href="#funcionalidades" class="btn btn-secondary btn-lg">
+            <span>Conhecer Funcionalidades</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO 2 — FUNCIONALIDADES VERIFICADAS (CONFIRMADAS NO CÓDIGO REAL)
+         ====================================================================== -->
+    <section class="section-features" id="funcionalidades" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-heading-center">
+          <div class="section-kicker">Recursos Disponíveis</div>
+          <h2 id="features-title" class="section-title">O que o sistema faz na prática</h2>
+          <p class="section-subtitle">
+            Desenvolvido para atender o cotidiano real de professores e bibliotecários com simplicidade, sem exigir conhecimentos técnicos avançados.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Funcionalidade 1 -->
+          <div class="feature-card">
+            <div class="feature-icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Cadastro e Catálogo de Obras</h3>
+            <p class="feature-card-desc">
+              Organização completa do acervo com registro de título, autor, editora, ISBN, ano e categoria. Localize qualquer livro instantaneamente por busca textual.
+            </p>
+          </div>
+
+          <!-- Funcionalidade 2 -->
+          <div class="feature-card">
+            <div class="feature-icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Controle de Exemplares Físicos</h3>
+            <p class="feature-card-desc">
+              Controle individual de cada cópia física presente na biblioteca. Registre tombo, número de inventário, estado de conservação e localização na estante.
+            </p>
+          </div>
+
+          <!-- Funcionalidade 3 -->
+          <div class="feature-card">
+            <div class="feature-icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Circulação: Empréstimos e Devoluções</h3>
+            <p class="feature-card-desc">
+              Fluxo ágil de empréstimos, devoluções e renovações para alunos e professores. Controle automático de datas limites, devoluções e pendências.
+            </p>
+          </div>
+
+          <!-- Funcionalidade 4 -->
+          <div class="feature-card">
+            <div class="feature-icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Gestão de Leitores e Turmas</h3>
+            <p class="feature-card-desc">
+              Organização de leitores por turma escolar ou corpo docente. Histórico individual de leituras para incentivar projetos pedagógicos de leitura.
+            </p>
+          </div>
+
+          <!-- Funcionalidade 5 -->
+          <div class="feature-card">
+            <div class="feature-icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Relatórios e Gráficos de Evolução</h3>
+            <p class="feature-card-desc">
+              Painéis visuais com evolução temporal de leituras por mês, semestre ou ano letivo. Identifique as turmas mais ativas e as obras mais lidas da escola.
+            </p>
+          </div>
+
+          <!-- Funcionalidade 6 -->
+          <div class="feature-card">
+            <div class="feature-icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Gestão de Pendências e Alertas</h3>
+            <p class="feature-card-desc">
+              Visualização instantânea de livros em atraso e títulos reservados. Facilita o contato amigável com os responsáveis e a recuperação dos exemplares.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO 3 — COMO FUNCIONA (PASSO A PASSO SIMPLES)
+         ====================================================================== -->
+    <section class="section-how-it-works" aria-labelledby="how-it-works-title">
+      <div class="container">
+        <div class="section-heading-center">
+          <div class="section-kicker">Fluxo de Uso</div>
+          <h2 id="how-it-works-title" class="section-title">Como o sistema se integra à sua escola</h2>
+          <p class="section-subtitle">
+            Três passos práticos para colocar a biblioteca da sua escola em pleno funcionamento.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number" aria-hidden="true">1</div>
+            <h3 class="step-title">Cadastre o Acervo</h3>
+            <p class="step-desc">
+              Insira os livros e seus exemplares físicos de forma rápida. O sistema organiza cada volume com seu respectivo tombo e localização física.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number" aria-hidden="true">2</div>
+            <h3 class="step-title">Circulação no Dia a Dia</h3>
+            <p class="step-desc">
+              Registre empréstimos para alunos e professores em segundos. Acompanhe as datas previstas de devolução e gerencie renovações sem burocracia.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number" aria-hidden="true">3</div>
+            <h3 class="step-title">Acompanhe Indicadores</h3>
+            <p class="step-desc">
+              Visualize gráficos de evolução de leitura por período e identifique as turmas mais engajadas para promover iniciativas pedagógicas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO 4 — VISUALIZAÇÃO DO SISTEMA (TELAS REAIS DO PROJETO)
+         ====================================================================== -->
+    <section class="section-system-preview" aria-labelledby="preview-title">
+      <div class="container">
+        <div class="section-heading-center">
+          <div class="section-kicker">Interface Real</div>
+          <h2 id="preview-title" class="section-title">Conheça o sistema por dentro</h2>
+          <p class="section-subtitle">
+            Telas reais da aplicação em funcionamento, com layout limpo, tipografia legível e contraste adequado.
+          </p>
+        </div>
+
+        <!-- Botões de Troca de Telas -->
+        <div class="preview-tabs" role="tablist" aria-label="Telas do sistema">
+          <button type="button" class="preview-tab-btn active" data-image="../images/biblioteca/dashboard.png" data-caption="Dashboard gerencial com resumo de exemplares, empréstimos ativos, pendências e ações rápidas." data-badge="Painel Inicial">Dashboard</button>
+          <button type="button" class="preview-tab-btn" data-image="../images/biblioteca/acervo.png" data-caption="Catálogo de livros com busca em tempo real por título, autor e categorias." data-badge="Catálogo">Acervo de Livros</button>
+          <button type="button" class="preview-tab-btn" data-image="../images/biblioteca/exemplar.png" data-caption="Controle físico de exemplares por tombo, conservação e localização nas estantes." data-badge="Patrimônio">Exemplares Físicos</button>
+          <button type="button" class="preview-tab-btn" data-image="../images/biblioteca/emprestimos.png" data-caption="Operação ágil de circulação com identificação de leitor, prazos e confirmações." data-badge="Circulação">Empréstimos</button>
+          <button type="button" class="preview-tab-btn" data-image="../images/biblioteca/relatorios.png" data-caption="Métricas temporais com gráfico de evolução de leituras por mês e semestre letivo." data-badge="Métricas">Gráficos de Evolução</button>
+          <button type="button" class="preview-tab-btn" data-image="../images/biblioteca/ranking.png" data-caption="Relatório de turmas mais ativas e obras literárias mais emprestadas no ano." data-badge="Rankings">Turmas Mais Leitoras</button>
+        </div>
+
+        <!-- Moldura de Exibição da Tela -->
+        <div class="preview-display">
+          <img id="preview-image" src="../images/biblioteca/dashboard.png" alt="Dashboard do sistema de bibliotecas exibindo indicadores de acervo e empréstimos" width="1440" height="900" loading="lazy">
+          <div class="preview-caption">
+            <span id="preview-caption-text">Dashboard gerencial com resumo de exemplares, empréstimos ativos, pendências e ações rápidas.</span>
+            <span class="search-result-category" id="preview-badge-text">Painel Inicial</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO 5 — ACESSO À APLICAÇÃO (FLUXO EXPLICADO ANTES DO LOGIN)
+         ====================================================================== -->
+    <section class="section-access-cta" id="acesso-sistema" aria-labelledby="access-title">
+      <div class="container">
+        <div class="access-card">
+          <div class="section-kicker" style="color: #f7a072;">Pronto para Usar</div>
+          <h2 id="access-title" class="access-title">Acesse o Sistema de Bibliotecas</h2>
+          <p class="access-desc">
+            Clique no botão abaixo para ser direcionado à aplicação. Caso sua instituição já possua cadastro, realize o login com suas credenciais de acesso.
+          </p>
+
+          <a href="http://localhost:8000/login" data-link="app-library" class="btn btn-primary btn-lg" style="font-size: 1.1rem; padding: 16px 36px;">
+            <span>ACESSAR BIBLIOTECA</span>
+            <span class="btn-icon-right" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+
+          <p class="access-notice">
+            A aplicação abrirá em uma nova aba. O endereço pode ser configurado centralizadamente em <code>js/config.js</code>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO 6 — RETORNO INSTITUCIONAL
+         ====================================================================== -->
+    <section style="padding: 32px 0; background-color: var(--color-canvas); text-align: center; border-top: 1px solid var(--color-border-subtle);">
+      <div class="container">
+        <p style="font-size: 0.95rem; color: var(--color-text-body); margin-bottom: 12px;">
+          Deseja conhecer mais sobre a proposta do Vem da Escola e outras iniciativas?
+        </p>
+        <a href="../index.html" class="btn btn-secondary">
+          <span>← Voltar para a Página Inicial</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       RODAPÉ INSTITUCIONAL
+       ====================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/logo-vem-da-escola.svg" alt="Vem da Escola" class="brand-logo-footer" width="220" height="40">
+          <p class="footer-desc">
+            Transformando décadas de vivência na escola em soluções digitais acessíveis, funcionais e organizadas para toda a comunidade educacional.
+          </p>
+          <div class="footer-quote">
+            "Quando o conhecimento circula, a educação se fortalece."
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Navegação</div>
+          <ul class="footer-links">
+            <li><a href="../index.html" class="footer-link">Início</a></li>
+            <li><a href="../educadores.html" class="footer-link">Para Educadores</a></li>
+            <li><a href="../familias.html" class="footer-link">Para Famílias</a></li>
+            <li><a href="../conteudos.html" class="footer-link">Conteúdos</a></li>
+            <li><a href="../sobre.html" class="footer-link">Sobre a Iniciativa</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-title">Ferramentas</div>
+          <ul class="footer-links">
+            <li><a href="biblioteca.html" class="footer-link">Biblioteca Escolar</a></li>
+            <li><a href="#funcionalidades" class="footer-link">Gestão de Acervo</a></li>
+            <li><a href="#funcionalidades" class="footer-link">Circulação &amp; Empréstimos</a></li>
+            <li><a href="#funcionalidades" class="footer-link">Relatórios Gerenciais</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-title">Contato</div>
+          <div class="footer-contact-info">
+            <p>Atendimento a escolas e educadores:</p>
+            <p><a href="../contato.html" class="footer-link" style="color: var(--color-terracotta); font-weight: 600;">Fale Conosco →</a></p>
+            <p style="font-size: 0.8rem; margin-top: 8px;">Canais oficiais de diálogo dedicados a professores, gestores e famílias.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Vem da Escola — Fundado por Fabby Assis. Todos os direitos reservados.</p>
+        <p>Desenvolvido com foco em acessibilidade e simplicidade operacional.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal de Pesquisa -->
+  <dialog id="search-dialog" class="search-dialog" aria-labelledby="search-dialog-title">
+    <div class="search-dialog-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search-input" class="search-input" placeholder="Pesquisar por ferramentas, temas, conteúdos..." aria-label="Termo de pesquisa">
+      <button type="button" class="btn-close-search" data-action="close-search" aria-label="Fechar busca (Esc)">ESC</button>
+    </div>
+    <div class="search-dialog-body" id="search-results"></div>
+    <div class="search-dialog-footer">
+      <span>Navegue pelos resultados e clique para acessar</span>
+      <span>Atalho: <strong>Ctrl + K</strong></span>
+    </div>
+  </dialog>
+
+  <!-- Scripts -->
+  <script src="../js/config.js"></script>
+  <script src="../js/search.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

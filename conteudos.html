@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conteúdos &amp; Artigos — Vem da Escola</title>
+  <meta name="description" content="Artigos, guias e materiais sobre educação, escola, família e desenvolvimento. Conteúdo pedagógico fundamentado na prática escolar diária.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="index.html" class="brand-link" aria-label="Vem da Escola — Página Inicial">
+        <img src="images/logo-vem-da-escola.svg" alt="Vem da Escola" class="brand-logo" width="220" height="40">
+      </a>
+
+      <nav class="nav-menu" role="navigation" aria-label="Navegação Principal">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="educadores.html" class="nav-link">Para Educadores</a>
+        <a href="familias.html" class="nav-link">Para Famílias</a>
+        <a href="conteudos.html" class="nav-link active" aria-current="page">Conteúdos</a>
+        <a href="sobre.html" class="nav-link">Sobre</a>
+        <a href="contato.html" class="nav-link">Contato</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-search-trigger" data-action="open-search" aria-label="Pesquisar no site">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <a href="ferramentas/biblioteca.html" class="btn btn-nav-access" title="Apresentação do Sistema de Bibliotecas">
+          <span>Acessar</span>
+          <span class="btn-icon-right" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+
+        <button type="button" class="mobile-toggle" aria-expanded="false" aria-label="Abrir menu de navegação">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <section class="page-hero">
+      <div class="container">
+        <div class="section-kicker">Conhecimento Compartilhado</div>
+        <h1 class="page-hero-title">Conteúdos &amp; Materiais</h1>
+        <p class="page-hero-subtitle">
+          Artigos, guias práticos e reflexões pedagógicas sobre educação, gestão escolar, incentivo à leitura e relação família-escola.
+        </p>
+      </div>
+    </section>
+
+    <section class="page-content-section">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--spacing-6);">
+          <!-- Artigo 1 -->
+          <article style="background-color: var(--color-white); border: 1px solid var(--color-card-border); border-radius: var(--radius-xl); padding: var(--spacing-6); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="search-result-category" style="margin-bottom: var(--spacing-3); display: inline-block;">Gestão Escolar</span>
+              <h2 style="font-size: var(--font-size-md); margin-bottom: var(--spacing-2); color: var(--color-navy);">Por que organizar a biblioteca é o primeiro passo para uma escola leitora?</h2>
+              <p style="font-size: var(--font-size-sm); color: var(--color-text-body); line-height: 1.5; margin-bottom: var(--spacing-4);">
+                A biblioteca viva não é depósito de livros guardados a sete chaves, mas um espaço dinâmico de circulação e descobertas. Como o inventário claro destrava o acesso aos livros.
+              </p>
+            </div>
+            <a href="ferramentas/biblioteca.html" class="btn btn-secondary" style="font-size: 0.85rem; width: fit-content;">Conhecer Soluções de Biblioteca →</a>
+          </article>
+
+          <!-- Artigo 2 -->
+          <article style="background-color: var(--color-white); border: 1px solid var(--color-card-border); border-radius: var(--radius-xl); padding: var(--spacing-6); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="search-result-category" style="margin-bottom: var(--spacing-3); display: inline-block;">Pedagógico</span>
+              <h2 style="font-size: var(--font-size-md); margin-bottom: var(--spacing-2); color: var(--color-navy);">Da experiência do quadro verde à inovação digital</h2>
+              <p style="font-size: var(--font-size-sm); color: var(--color-text-body); line-height: 1.5; margin-bottom: var(--spacing-4);">
+                A transição tecnológica na educação só funciona quando preserva o afeto, a escuta e a sabedoria acumulada pelas décadas de prática de sala de aula.
+              </p>
+            </div>
+            <a href="sobre.html" class="btn btn-secondary" style="font-size: 0.85rem; width: fit-content;">Ler Reflexão Completa →</a>
+          </article>
+
+          <!-- Artigo 3 -->
+          <article style="background-color: var(--color-white); border: 1px solid var(--color-card-border); border-radius: var(--radius-xl); padding: var(--spacing-6); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="search-result-category" style="margin-bottom: var(--spacing-3); display: inline-block;">Família &amp; Escola</span>
+              <h2 style="font-size: var(--font-size-md); margin-bottom: var(--spacing-2); color: var(--color-navy);">Rotinas de leitura que aproximam pais e filhos</h2>
+              <p style="font-size: var(--font-size-sm); color: var(--color-text-body); line-height: 1.5; margin-bottom: var(--spacing-4);">
+                15 minutos diários de leitura compartilhada geram impacto comprovado no vocabulário, na interpretação textual e na segurança emocional das crianças.
+              </p>
+            </div>
+            <a href="familias.html" class="btn btn-secondary" style="font-size: 0.85rem; width: fit-content;">Ver Orientações para Pais →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-vem-da-escola.svg" alt="Vem da Escola" class="brand-logo-footer" width="220" height="40">
+          <p class="footer-desc">Transformando décadas de vivência na escola em soluções digitais acessíveis e organizadas.</p>
+          <div class="footer-quote">"Quando o conhecimento circula, a educação se fortalece."</div>
+        </div>
+        <div>
+          <div class="footer-title">Navegação</div>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Início</a></li>
+            <li><a href="educadores.html" class="footer-link">Para Educadores</a></li>
+            <li><a href="familias.html" class="footer-link">Para Famílias</a></li>
+            <li><a href="conteudos.html" class="footer-link">Conteúdos</a></li>
+            <li><a href="sobre.html" class="footer-link">Sobre</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Ferramentas</div>
+          <ul class="footer-links">
+            <li><a href="ferramentas/biblioteca.html" class="footer-link">Biblioteca Escolar</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Contato</div>
+          <div class="footer-contact-info">
+            <p><a href="contato.html" class="footer-link" style="color: var(--color-terracotta); font-weight: 600;">Fale Conosco →</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Vem da Escola — Fundado por Fabby Assis.</p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="search-dialog" class="search-dialog" aria-labelledby="search-dialog-title">
+    <div class="search-dialog-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="search-input" class="search-input" placeholder="Pesquisar..." aria-label="Pesquisar">
+      <button type="button" class="btn-close-search" data-action="close-search">ESC</button>
+    </div>
+    <div class="search-dialog-body" id="search-results"></div>
+    <div class="search-dialog-footer"><span>Ctrl + K para buscar</span></div>
+  </dialog>
+
+  <script src="js/config.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

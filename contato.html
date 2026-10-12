@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato — Vem da Escola</title>
+  <meta name="description" content="Entre em contato com a equipe do Vem da Escola. Canal de diálogo para educadores, gestores escolares e famílias.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="index.html" class="brand-link" aria-label="Vem da Escola — Página Inicial">
+        <img src="images/logo-vem-da-escola.svg" alt="Vem da Escola" class="brand-logo" width="220" height="40">
+      </a>
+
+      <nav class="nav-menu" role="navigation" aria-label="Navegação Principal">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="educadores.html" class="nav-link">Para Educadores</a>
+        <a href="familias.html" class="nav-link">Para Famílias</a>
+        <a href="conteudos.html" class="nav-link">Conteúdos</a>
+        <a href="sobre.html" class="nav-link">Sobre</a>
+        <a href="contato.html" class="nav-link active" aria-current="page">Contato</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-search-trigger" data-action="open-search" aria-label="Pesquisar no site">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <a href="ferramentas/biblioteca.html" class="btn btn-nav-access" title="Apresentação do Sistema de Bibliotecas">
+          <span>Acessar</span>
+          <span class="btn-icon-right" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+
+        <button type="button" class="mobile-toggle" aria-expanded="false" aria-label="Abrir menu de navegação">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <section class="page-hero">
+      <div class="container">
+        <div class="section-kicker">Canais de Diálogo</div>
+        <h1 class="page-hero-title">Fale Conosco</h1>
+        <p class="page-hero-subtitle">
+          Tem interesse em adotar o sistema de bibliotecas na sua escola ou quer compartilhar uma sugestão? Envie sua mensagem para nossa equipe.
+        </p>
+      </div>
+    </section>
+
+    <section class="page-content-section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Coluna 1: Formulário Real -->
+          <div>
+            <form id="contact-form" class="contact-form" novalidate>
+              <div id="contact-feedback" style="display: none; margin-bottom: var(--spacing-4);"></div>
+
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Nome Completo *</label>
+                <input type="text" id="contact-name" class="form-control" placeholder="Seu nome" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label">E-mail para Retorno *</label>
+                <input type="email" id="contact-email" class="form-control" placeholder="exemplo@escola.com.br" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-role" class="form-label">Seu Papel na Educação</label>
+                <select id="contact-role" class="form-control">
+                  <option value="professor">Professor / Educador</option>
+                  <option value="gestor">Gestor Escolar / Direção</option>
+                  <option value="bibliotecario">Bibliotecário / Responsável pelo Acervo</option>
+                  <option value="familia">Pai, Mãe ou Responsável</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject" class="form-label">Assunto</label>
+                <input type="text" id="contact-subject" class="form-control" placeholder="Ex: Informações sobre o sistema de bibliotecas">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message" class="form-label">Mensagem *</label>
+                <textarea id="contact-message" class="form-control" placeholder="Descreva sua dúvida, necessidade ou comentário..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                <span>Enviar Mensagem</span>
+                <span class="btn-icon-right" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Coluna 2: Informações de Atendimento -->
+          <div>
+            <div style="background-color: var(--color-canvas); padding: var(--spacing-8); border-radius: var(--radius-xl); border: 1px solid var(--color-card-border); margin-bottom: var(--spacing-6);">
+              <h2 style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-3);">Atendimento a Escolas</h2>
+              <p style="color: var(--color-text-body); font-size: var(--font-size-sm); line-height: 1.6; margin-bottom: var(--spacing-4);">
+                Nosso suporte e diálogo com instituições de ensino funciona de forma contínua, orientando a implantação do sistema gratuito de gestão de bibliotecas escolares.
+              </p>
+              <div style="font-size: var(--font-size-sm); color: var(--color-navy); display: flex; flex-direction: column; gap: var(--spacing-2);">
+                <p><strong>Horário de Atendimento:</strong> Segunda a sexta-feira, em horário escolar.</p>
+                <p><strong>Público Atendido:</strong> Redes públicas, escolas comunitárias e instituições privadas.</p>
+              </div>
+            </div>
+
+            <div style="background-color: var(--color-blue-tint); padding: var(--spacing-6); border-radius: var(--radius-xl); border: 1px solid var(--color-blue-border);">
+              <h3 style="font-size: var(--font-size-md); color: var(--color-navy); margin-bottom: var(--spacing-2);">Quer testar o sistema agora?</h3>
+              <p style="font-size: var(--font-size-sm); color: var(--color-text-body); line-height: 1.5; margin-bottom: var(--spacing-4);">
+                Você não precisa aguardar resposta para conhecer a Biblioteca Escolar. Veja as funcionalidades detalhadas e o fluxo de acesso.
+              </p>
+              <a href="ferramentas/biblioteca.html" class="btn btn-navy" style="font-size: 0.85rem;">Ver Apresentação da Biblioteca →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-vem-da-escola.svg" alt="Vem da Escola" class="brand-logo-footer" width="220" height="40">
+          <p class="footer-desc">Transformando décadas de vivência na escola em soluções digitais acessíveis e organizadas.</p>
+          <div class="footer-quote">"Quando o conhecimento circula, a educação se fortalece."</div>
+        </div>
+        <div>
+          <div class="footer-title">Navegação</div>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Início</a></li>
+            <li><a href="educadores.html" class="footer-link">Para Educadores</a></li>
+            <li><a href="familias.html" class="footer-link">Para Famílias</a></li>
+            <li><a href="conteudos.html" class="footer-link">Conteúdos</a></li>
+            <li><a href="sobre.html" class="footer-link">Sobre</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Ferramentas</div>
+          <ul class="footer-links">
+            <li><a href="ferramentas/biblioteca.html" class="footer-link">Biblioteca Escolar</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Contato</div>
+          <div class="footer-contact-info">
+            <p><a href="contato.html" class="footer-link" style="color: var(--color-terracotta); font-weight: 600;">Fale Conosco →</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Vem da Escola — Fundado por Fabby Assis.</p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="search-dialog" class="search-dialog" aria-labelledby="search-dialog-title">
+    <div class="search-dialog-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="search-input" class="search-input" placeholder="Pesquisar..." aria-label="Pesquisar">
+      <button type="button" class="btn-close-search" data-action="close-search">ESC</button>
+    </div>
+    <div class="search-dialog-body" id="search-results"></div>
+    <div class="search-dialog-footer"><span>Ctrl + K para buscar</span></div>
+  </dialog>
+
+  <script src="js/config.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

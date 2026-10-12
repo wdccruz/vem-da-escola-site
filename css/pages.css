@@ -1,0 +1,629 @@
+/* ==========================================================================
+   VEM DA ESCOLA — PÁGINAS CSS
+   Estilos específicos da Página Inicial, Biblioteca e Seções Auxiliares
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Página Inicial — Seção Hero
+   -------------------------------------------------------------------------- */
+.section-hero {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-10);
+  background-color: var(--color-canvas);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: var(--spacing-10);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 3.8vw, 3.25rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.15;
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-4);
+  letter-spacing: -0.025em;
+}
+
+.hero-title .highlight {
+  color: var(--color-terracotta);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  color: var(--color-text-body);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-8);
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+/* Imagem do Hero */
+.hero-media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image-wrapper {
+  width: 100%;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-card-border);
+  background-color: var(--color-white);
+  transition: transform var(--transition-normal);
+}
+
+.hero-image-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   2. Página Inicial — Seção dos Cartões
+   -------------------------------------------------------------------------- */
+.section-cards {
+  padding-top: var(--spacing-6);
+  padding-bottom: var(--spacing-12);
+  background-color: var(--color-canvas);
+}
+
+/* --------------------------------------------------------------------------
+   3. Página Inicial — Seção Quem Somos
+   -------------------------------------------------------------------------- */
+.section-about {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-16);
+  background-color: var(--color-canvas);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: var(--spacing-12);
+}
+
+/* Foto da Professora */
+.about-media {
+  position: relative;
+}
+
+.about-image-wrapper {
+  width: 100%;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-card-border);
+  background-color: var(--color-white);
+}
+
+.about-image-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Conteúdo Quem Somos */
+.about-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-title {
+  font-size: clamp(1.85rem, 3vw, 2.6rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.2;
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-4);
+  letter-spacing: -0.02em;
+}
+
+.about-title .highlight {
+  color: var(--color-terracotta);
+}
+
+.about-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-body);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-8);
+}
+
+/* Os 3 Pilares de Valor */
+.about-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-8);
+}
+
+.pillar-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  text-align: left;
+}
+
+.pillar-number {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-terracotta);
+  line-height: 1;
+  margin-bottom: var(--spacing-1);
+}
+
+.pillar-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-1);
+}
+
+.pillar-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* Citação / Destaque inferior direito */
+.about-quote-box {
+  background-color: var(--color-blue-tint);
+  border-left: 3px solid var(--color-terracotta);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--spacing-4) var(--spacing-5);
+}
+
+.about-quote-text {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  font-style: italic;
+  color: var(--color-navy);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   4. Página de Apresentação da Biblioteca Escolar (/ferramentas/biblioteca.html)
+   -------------------------------------------------------------------------- */
+.library-hero {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+  background: linear-gradient(180deg, #faf8f5 0%, #f4eee6 100%);
+  border-bottom: 1px solid var(--color-border-subtle);
+  text-align: center;
+}
+
+.library-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background-color: var(--color-terracotta-light);
+  color: var(--color-terracotta);
+  border: 1px solid var(--color-terracotta-subtle);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-4);
+}
+
+.library-hero-title {
+  font-size: clamp(2.2rem, 4vw, 3.25rem);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-3);
+}
+
+.library-hero-subtitle {
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  color: var(--color-text-body);
+  max-width: 720px;
+  margin: 0 auto var(--spacing-8);
+  line-height: var(--line-height-normal);
+}
+
+.library-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+/* Seção de Funcionalidades Verificadas */
+.section-features {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+  background-color: var(--color-white);
+}
+
+.section-heading-center {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto var(--spacing-12);
+}
+
+.section-kicker {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-terracotta);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--spacing-2);
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-3);
+}
+
+.section-subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-6);
+}
+
+.feature-card {
+  background-color: var(--color-canvas);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  transition: all var(--transition-normal);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  background-color: var(--color-white);
+  border-color: var(--color-blue-border);
+}
+
+.feature-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-blue-tint);
+  color: var(--color-blue-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-4);
+}
+
+.feature-icon-box svg {
+  width: 24px;
+  height: 24px;
+}
+
+.feature-card-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-2);
+}
+
+.feature-card-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-body);
+  line-height: 1.55;
+}
+
+/* Seção Como Funciona */
+.section-how-it-works {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+  background-color: var(--color-canvas);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-8);
+  position: relative;
+}
+
+.step-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8) var(--spacing-6);
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-extrabold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--spacing-4);
+}
+
+.step-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-2);
+}
+
+.step-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-body);
+  line-height: 1.5;
+}
+
+/* Seção Telas do Sistema / Galeria */
+.section-system-preview {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+  background-color: var(--color-white);
+}
+
+.preview-tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-8);
+  flex-wrap: wrap;
+}
+
+.preview-tab-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-navy);
+  background-color: var(--color-canvas);
+  border: 1px solid var(--color-card-border);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.preview-tab-btn:hover {
+  background-color: var(--color-canvas-alt);
+}
+
+.preview-tab-btn.active {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  border-color: var(--color-navy);
+}
+
+.preview-display {
+  max-width: 1040px;
+  margin: 0 auto;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-card-border);
+  background-color: var(--color-canvas-alt);
+}
+
+.preview-display img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.preview-caption {
+  padding: var(--spacing-4) var(--spacing-6);
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border-subtle);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-body);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Seção de Acesso à Biblioteca */
+.section-access-cta {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+  background: linear-gradient(135deg, #152e44 0%, #1a3c5a 100%);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.access-card {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.access-title {
+  color: var(--color-white);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--spacing-4);
+}
+
+.access-desc {
+  font-size: var(--font-size-md);
+  color: #cfdeec;
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-8);
+}
+
+.access-notice {
+  font-size: var(--font-size-xs);
+  color: #9cb8d4;
+  margin-top: var(--spacing-4);
+}
+
+/* --------------------------------------------------------------------------
+   5. Páginas Auxiliares (Educadores, Famílias, Conteúdos, Sobre, Contato)
+   -------------------------------------------------------------------------- */
+.page-hero {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-12);
+  background-color: var(--color-canvas);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.page-hero-title {
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-3);
+}
+
+.page-hero-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-body);
+  max-width: 680px;
+  line-height: var(--line-height-normal);
+}
+
+.page-content-section {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-16);
+  background-color: var(--color-white);
+}
+
+/* Formulário de Contato */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-12);
+}
+
+.contact-form {
+  background-color: var(--color-canvas);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-5);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-navy);
+  margin-bottom: var(--spacing-2);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--color-navy);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--color-terracotta);
+  box-shadow: 0 0 0 3px var(--color-terracotta-light);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* --------------------------------------------------------------------------
+   6. Responsividade das Páginas
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .library-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

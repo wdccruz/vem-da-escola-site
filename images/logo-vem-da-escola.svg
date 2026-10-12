@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" width="220" height="40" fill="none">
+  <!-- Brand text: vem da escola -->
+  <text x="4" y="27" font-family="'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#152e44" letter-spacing="-0.5">
+    vem da <tspan fill="#152e44">escola</tspan>
+  </text>
+  <!-- Decorative hand-drawn orange smile/swoosh under "escola" -->
+  <path d="M128 32 C 145 35.5, 180 35.5, 202 30" stroke="#dd5024" stroke-width="3" stroke-linecap="round" fill="none" />
+  <!-- Little playful sparkle / sun rays above "escola" -->
+  <circle cx="206" cy="12" r="2.5" fill="#dd5024" />
+  <path d="M206 5 L206 8 M213 12 L210 12 M211 7 L209 9" stroke="#dd5024" stroke-width="1.8" stroke-linecap="round" />
+</svg>
